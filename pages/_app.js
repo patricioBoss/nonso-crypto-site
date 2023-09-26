@@ -181,7 +181,7 @@ export default function MyApp(props) {
         `}
       </Script> */}
 
-      <Script>{`window.$crisp=[];window.CRISP_WEBSITE_ID="175dce82-598a-4ab7-bb64-8a98d7edc185";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}</Script>
+      {/* <Script>{`window.$crisp=[];window.CRISP_WEBSITE_ID="175dce82-598a-4ab7-bb64-8a98d7edc185";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}</Script> */}
     </>
   );
 }

@@ -15,6 +15,14 @@ a {
   text-decoration: none;
 }
 
+.bg-blue-gradient,
+.text-gradient {
+  background: linear-gradient(136.91deg, #468ef9 -12.5%, #0c66ee 107.5%);
+}
+
+.tv-embed-widget-wrapper__body {
+  border-color: #131722 !important;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import LandingLayout from "../components/landing-layout/LandingLayout";
 
 const settings = {
   container: ".tiny-home-slide-four",
@@ -131,7 +130,4 @@ const HeroSection = () => {
   );
 };
 
-HeroSection.getLayout = function getLayout(page) {
-  return <LandingLayout>{page}</LandingLayout>;
-};
 export default HeroSection;

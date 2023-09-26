@@ -1,9 +1,9 @@
 import React from "react";
-import Footer from "../landing-pages-main/Footer";
 import Navbar from "../landing-main-pages/Navbar";
 // import TawkMessenger from "../TawkMessenger";
 import WhatsAppWidget from "../WhatsAppWidget";
 import RandomToast from "../RandomToast";
+import Footer from "../landing-main-pages/Footer";
 
 const LandingLayout = ({ children, isSticky }) => {
   return (
