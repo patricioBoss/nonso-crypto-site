@@ -29,44 +29,27 @@ async function handler({ req }) {
   );
 
   const uniqueStockString = [
-    ...new Set(
-      allInvestments.map((x) =>
-        x.stock === "usdt" || x.stock === "btc"
-          ? `${x.stock.toUpperCase()}-USD`
-          : x.stock.toUpperCase()
-      )
-    ),
+    ...new Set(allInvestments.map((x) => x.stock.toUpperCase())),
   ].join(",");
-  // const stocksResponse = await axios.get(
-  //   `https://query1.finance.yahoo.com/v6/finance/quote?symbols=${
-  //     uniqueStockString ? uniqueStockString : "NONE"
-  //   }`
-  // );
-  const stocksResponse = await axios(
-    {
-      baseURL: process.env.NEXT_PUBLIC_IMAGE_SERVER,
-      method: "GET",
-      url: "/yahooapi/quotes",
-      params: {
-        symbols: uniqueStockString ? uniqueStockString : "NONE",
-      },
-    }
-    // `https://query1.finance.yahoo.com/v6/finance/quote?symbols=${stocksListString}`
-  );
-  const stocksDataList = await stocksResponse.data.data;
+
+  const { data: cryptoDataList } = await axios({
+    baseURL: "https://api.coingecko.com",
+    method: "GET",
+    url: "/api/v3/coins/markets",
+    params: {
+      vs_currency: "usd",
+      ids: uniqueStockString,
+    },
+  });
+
   // const stocksDataList = await stocksResponse.data.quoteResponse.result;
-  const stocksDataMap = stocksDataList.reduce((acc, stock) => {
-    acc[stock.symbol] = stock;
+  const stocksDataMap = cryptoDataList.reduce((acc, stock) => {
+    acc[stock.id] = stock;
     return acc;
   }, {});
   const investmentsWithStockData = allInvestments.map((x) => ({
     ...x,
-    stock:
-      stocksDataMap[
-        x.stock === "usdt" || x.stock === "btc"
-          ? `${x.stock.toUpperCase()}-USD`
-          : x.stock.toUpperCase()
-      ],
+    stock: stocksDataMap[x.stock],
   }));
 
   return {
@@ -163,27 +146,25 @@ export default function AllInvestments({ user, allInvestments }) {
 
       const fetchedInvestments = res.data.data;
       const uniqueStockString = [
-        ...new Set(fetchedInvestments.map((x) => x.stock)),
+        ...new Set(fetchedInvestments.map((x) => x.stock.toUpperCase())),
       ].join(",");
-      const stocksResponse = await axios(
-        {
-          baseURL: process.env.NEXT_PUBLIC_IMAGE_SERVER,
-          method: "GET",
-          url: "/yahooapi/quotes",
-          params: {
-            symbols: uniqueStockString ? uniqueStockString : "NONE",
-          },
-        }
-        // `https://query1.finance.yahoo.com/v6/finance/quote?symbols=${stocksListString}`
-      );
 
-      const stocksDataList = await stocksResponse.data.data;
-      console.log("stocksDataList", stocksDataList);
-      const stocksDataMap = stocksDataList.reduce((acc, stock) => {
-        acc[stock.symbol] = stock;
+      const { data: cryptoDataList } = await axios({
+        baseURL: "https://api.coingecko.com",
+        method: "GET",
+        url: "/api/v3/coins/markets",
+        params: {
+          vs_currency: "usd",
+          ids: uniqueStockString,
+        },
+      });
+
+      // const stocksDataList = await stocksResponse.data.quoteResponse.result;
+      const stocksDataMap = cryptoDataList.reduce((acc, stock) => {
+        acc[stock.id] = stock;
         return acc;
       }, {});
-      const investmentsWithStockData = fetchedInvestments.map((x) => ({
+      const investmentsWithStockData = allInvestments.map((x) => ({
         ...x,
         stock: stocksDataMap[x.stock],
       }));

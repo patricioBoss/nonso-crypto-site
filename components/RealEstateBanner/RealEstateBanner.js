@@ -5,24 +5,30 @@ import Banner from "./banner";
 
 const reels = [
   {
+    bg: "bg-[linear-gradient(180deg,#598EF3_0%,#000000_100%,#ADE1FF_100%)]",
+    color: "#FFFFFF",
+    button: "warning",
     imgUrl: "/img/real/banner/1.png",
-    title:
-      "Achieve Your Financial Goals with Elizabeth Graney's Wealth Management Services",
+    title: "Your Journey to Crypto Prosperity Begins Here",
     paragraph:
-      "Elizabeth Graney offers a wide range of carefully tailored wealth management services that allow you to diversify and maximize your returns. With her expertise, investing in your financial future has never been easier.",
+      "FidelityCrypto takes you on an exciting journey into the world of AI-driven crypto mining. It's your chance to embark on a path of financial prosperity with cutting-edge technology by your side",
   },
   {
+    bg: "bg-[linear-gradient(180deg,#598EF3_0%,#ADE1FF_100%,#ADE1FF_100%)]",
+    color: "#000000",
+    button: "error",
     imgUrl: "/img/real/banner/2.png",
-    title:
-      "Unlock Your Wealth with Elizabeth Graney's Wealth Management Strategies",
+    title: "FidelityCrypto AI: Where Innovation Meets Mining",
     paragraph:
-      "Wealth management is a proven way to build long-term financial security and achieve your goals. Elizabeth Graney offers access to personalized investment strategies and a comprehensive range of services to help you unlock your wealth potential.",
+      "Step into the future of mining with FidelityCrypto. We've brought innovation and AI together to create a platform that's setting new standards in the world of cryptocurrency",
   },
   {
-    title:
-      "Unlock Your Wealth with Elizabeth Graney's Expert Wealth Management Services",
+    bg: "bg-[linear-gradient(180deg,#598EF3_0%,#000000_100%,#ADE1FF_100%)]",
+    color: "#FFFFFF",
+    button: "warning",
+    title: "AI-Powered Mining for Tomorrow's Investors",
     paragraph:
-      "Experience high returns and hassle-free financial planning with Elizabeth Graney's diverse range of wealth management solutions. Join now and take control of your financial future!",
+      "FidelityCrypto is paving the way for tomorrow's investors. With AI-powered mining, we bring you a platform that's designed to deliver success in the world of cryptocurrency.",
 
     imgUrl: "/img/real/banner/3.png",
   },
@@ -53,7 +59,7 @@ const RealEstateBanner = () => {
         {reels.map((reel) => (
           <SwiperSlide
             key={reel.imgUrl}
-            className="bg-[linear-gradient(180deg,#4AA0FF_0%,#ADE1FF_100%,#ADE1FF_100%)] rounded-[1rem] overflow-hidden"
+            className={`${reel.bg} rounded-[1rem] overflow-hidden`}
           >
             <Banner reel={reel} />
           </SwiperSlide>

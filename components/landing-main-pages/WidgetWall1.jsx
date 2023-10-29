@@ -18,9 +18,10 @@ const WidgetWall1 = () => {
           <h2 className="text-3xl font-bold tracking-tight text-center  text-white sm:text-4xl">
             Trusted by over I million Users across the World.
           </h2>
-          <p className="text-lg text-blue-200 mt-4 mb-8">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <p className="text-lg text-blue-200 mt-4 mb-8 text-center max-w-768">
+            We engage in trading a vast portfolio of over 200 cryptocurrencies,
+            offering a diverse range of options for investment and trading
+            opportunities.
           </p>
         </div>
 

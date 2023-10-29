@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import LanguageTranslate from "../LanguageTranslate";
 
 const Footer = () => {
   return (
@@ -19,21 +18,23 @@ const Footer = () => {
                     />
                   </a>
                   <p className="mt-2 mb-3 text-gray-300">
-                    At Ethervest, we are dedicated to helping our clients
-                    achieve their financial goals through personalized
-                    investment solutions and exceptional service.
+                    FidelityCryptoPro assists individuals in achieving financial
+                    success by leveraging the power of AI-driven cryptocurrency
+                    mining. Through our innovative approach, we optimize mining
+                    operations, enhancing efficiency and profitability for our
+                    users.
                   </p>
                   {/* <LanguageTranslate /> */}
                   <ul className="list-none mt-6">
-                    {/* <li className="inline"><a href="https://1.envato.market/techwind" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i className="uil uil-shopping-cart align-middle" title="Buy Now"></i></a></li>
-                                <li className="inline"><a href="https://dribbble.com/shreethemes" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i className="uil uil-dribbble align-middle" title="dribbble"></i></a></li>
-                                <li className="inline"><a href="https://www.behance.net/shreethemes" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i className="uil uil-behance" title="Behance"></i></a></li>
-                                <li className="inline"><a href="http://linkedin.com/company/shreethemes" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i className="uil uil-linkedin" title="Linkedin"></i></a></li>
-                                <li className="inline"><a href="https://www.facebook.com/shreethemes" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i className="uil uil-facebook-f align-middle" title="facebook"></i></a></li>
-                                <li className="inline"><a href="https://www.instagram.com/shreethemes/" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i className="uil uil-instagram align-middle" title="instagram"></i></a></li>
-                                <li className="inline"><a href="https://twitter.com/shreethemes" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i className="uil uil-twitter align-middle" title="twitter"></i></a></li>
-                                <li className="inline"><a href="mailto:support@shreethemes.in" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i className="uil uil-envelope align-middle" title="email"></i></a></li>
-                                <li className="inline"><a href="https://forms.gle/QkTueCikDGqJnbky9" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i className="uil uil-file align-middle" title="customization"></i></a></li> */}
+                    {/* <li className="inline"><a href="https://1.envato.market/techwind" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-blue-600 dark:hover:border-blue-600 hover:bg-blue-600 dark:hover:bg-blue-600"><i className="uil uil-shopping-cart align-middle" title="Buy Now"></i></a></li>
+                                <li className="inline"><a href="https://dribbble.com/shreethemes" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-blue-600 dark:hover:border-blue-600 hover:bg-blue-600 dark:hover:bg-blue-600"><i className="uil uil-dribbble align-middle" title="dribbble"></i></a></li>
+                                <li className="inline"><a href="https://www.behance.net/shreethemes" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-blue-600 dark:hover:border-blue-600 hover:bg-blue-600 dark:hover:bg-blue-600"><i className="uil uil-behance" title="Behance"></i></a></li>
+                                <li className="inline"><a href="http://linkedin.com/company/shreethemes" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-blue-600 dark:hover:border-blue-600 hover:bg-blue-600 dark:hover:bg-blue-600"><i className="uil uil-linkedin" title="Linkedin"></i></a></li>
+                                <li className="inline"><a href="https://www.facebook.com/shreethemes" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-blue-600 dark:hover:border-blue-600 hover:bg-blue-600 dark:hover:bg-blue-600"><i className="uil uil-facebook-f align-middle" title="facebook"></i></a></li>
+                                <li className="inline"><a href="https://www.instagram.com/shreethemes/" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-blue-600 dark:hover:border-blue-600 hover:bg-blue-600 dark:hover:bg-blue-600"><i className="uil uil-instagram align-middle" title="instagram"></i></a></li>
+                                <li className="inline"><a href="https://twitter.com/shreethemes" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-blue-600 dark:hover:border-blue-600 hover:bg-blue-600 dark:hover:bg-blue-600"><i className="uil uil-twitter align-middle" title="twitter"></i></a></li>
+                                <li className="inline"><a href="mailto:support@shreethemes.in" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-blue-600 dark:hover:border-blue-600 hover:bg-blue-600 dark:hover:bg-blue-600"><i className="uil uil-envelope align-middle" title="email"></i></a></li>
+                                <li className="inline"><a href="https://forms.gle/QkTueCikDGqJnbky9" target="_blank" className="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-blue-600 dark:hover:border-blue-600 hover:bg-blue-600 dark:hover:bg-blue-600"><i className="uil uil-file align-middle" title="customization"></i></a></li> */}
                   </ul>
                 </div>
 
@@ -44,37 +45,27 @@ const Footer = () => {
                   <ul className="list-none footer-list mt-6">
                     <li>
                       <Link
-                        href="/#about"
+                        href="/about"
                         className="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"
                       >
                         <i className="uil uil-angle-right-b me-1"></i> About us
                       </Link>
                     </li>
                     <li className="mt-[10px]">
-                      <a
-                        href="page-services.html"
-                        className="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"
-                      >
-                        <i className="uil uil-angle-right-b me-1"></i> Real
-                        Estate
-                      </a>
-                    </li>
-                    <li className="mt-[10px]">
                       <Link
-                        href="/cryptocurrency"
+                        href="/about#advance"
                         className="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"
                       >
                         <i className="uil uil-angle-right-b me-1"></i>{" "}
-                        Cryptocurrency
+                        Advancements
                       </Link>
                     </li>
                     <li className="mt-[10px]">
                       <Link
-                        href="/stocks"
+                        href="/faq"
                         className="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"
                       >
-                        <i className="uil uil-angle-right-b me-1"></i>{" "}
-                        Stocks/Bonds
+                        <i className="uil uil-angle-right-b me-1"></i> FAQs
                       </Link>
                     </li>
 
@@ -179,7 +170,7 @@ const Footer = () => {
                         type="submit"
                         id="submitsubscribe"
                         name="send"
-                        className="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md"
+                        className="btn bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md"
                       >
                         Subscribe
                       </button>

@@ -38,10 +38,6 @@ const InvestmentSchema = new mongoose.Schema(
       type: String,
       default: "stocks",
     },
-    currency: {
-      type: String,
-      required: "currency type needed",
-    },
     transactionId: {
       type: String,
     },

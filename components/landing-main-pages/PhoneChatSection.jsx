@@ -8,6 +8,7 @@ import { AppStoreLink } from "./component/AppStoreLink";
 import { Button } from "./component/Button";
 import { PhoneFrame } from "./component/PhoneFrame";
 import { Container } from "../landing-page-components/Container";
+import Link from "next/link";
 
 function BackgroundIllustration(props) {
   let id = useId();
@@ -170,8 +171,8 @@ function Chart({
           <path d={`${path} V ${height + paddingY} H ${paddingX} Z`} />
         </clipPath>
         <linearGradient id={`${id}-gradient`} x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="#13B5C8" />
-          <stop offset="100%" stopColor="#13B5C8" stopOpacity="0" />
+          <stop offset="0%" stopColor="#3b82f6" />
+          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
         </linearGradient>
       </defs>
       {[...Array(gridLines - 1).keys()].map((index) => (
@@ -202,7 +203,7 @@ function Chart({
         strokeLinejoin="round"
         initial={{ pathLength: 0 }}
         transition={{ duration: 1 }}
-        {...(isInView ? { stroke: "#06b6d4", animate: { pathLength: 1 } } : {})}
+        {...(isInView ? { stroke: "#2a6fe0", animate: { pathLength: 1 } } : {})}
         onUpdate={({ pathLength }) => {
           pathWidth.set(
             pathRef.current.getPointAtLength(
@@ -252,9 +253,8 @@ function AppDemo() {
         <div className="p-4">
           <div className="flex gap-2">
             <div className="text-xs leading-6 text-gray-500">
-              Tailwind Labs, Inc.
+              Bitcoin (BTC)/Tether(USDT).
             </div>
-            <div className="text-sm text-gray-900">$CSS</div>
             <svg viewBox="0 0 24 24" className="ml-auto h-6 w-6" fill="none">
               <path
                 d="M5 12a7 7 0 1 1 14 0 7 7 0 0 1-14 0ZM12 9v6M15 12H9"
@@ -270,12 +270,12 @@ function AppDemo() {
               <div className="text-2xl tabular-nums tracking-tight text-gray-900">
                 {activeValue.toFixed(2)}
               </div>
-              <div className="text-sm text-gray-900">USD</div>
+              <div className="text-sm text-gray-900">USDT</div>
               {percentageChange && (
                 <div
                   className={clsx(
                     "ml-auto text-sm tabular-nums tracking-tight",
-                    percentageChange >= 0 ? "text-cyan-500" : "text-gray-500"
+                    percentageChange >= 0 ? "text-blue-500" : "text-gray-500"
                   )}
                 >
                   {`${
@@ -287,7 +287,7 @@ function AppDemo() {
             <div className="mt-6 flex gap-4 text-xs text-gray-500">
               <div>1D</div>
               <div>5D</div>
-              <div className="font-semibold text-cyan-600">1M</div>
+              <div className="font-semibold text-blue-600">1M</div>
               <div>6M</div>
               <div>1Y</div>
               <div>5Y</div>
@@ -302,7 +302,7 @@ function AppDemo() {
                 onChangeActivePointIndex={setActivePointIndex}
               />
             </div>
-            <div className="mt-4 rounded-lg bg-cyan-500 py-2 px-4 text-center text-sm font-semibold text-white">
+            <div className="mt-4 rounded-lg bg-blue-500 py-2 px-4 text-center text-sm font-semibold text-white">
               Trade
             </div>
             <div className="mt-3 divide-y divide-gray-100 text-sm">
@@ -341,22 +341,25 @@ export function PhoneChatSection() {
           </div>
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
             <h1 className="text-4xl font-medium tracking-tight text-gray-900">
-              Invest at the perfect time.
+              Who We Are
             </h1>
             <p className="mt-6 text-lg text-gray-600">
-              By leveraging insights from our network of industry insiders,
-              you’ll know exactly when to buy to maximize profit, and exactly
-              when to sell to avoid painful losses.
+              FidelityCryptoPro, as an investment company, is committed to
+              redefining the landscape of digital investments. At the core of
+              our vision is the integration of cutting-edge technology,
+              particularly AI, to optimize investment strategies and deliver
+              exceptional results to our clients. With a focus on cryptocurrency
+              and blockchain assets, we strive to provide a secure and
+              profitable avenue for investors to participate in the dynamic
+              world of digital finance.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
-              <AppStoreLink />
-              <Button
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                variant="outline"
+              <Link
+                href="/about"
+                className="btn bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md"
               >
-                <PlayIcon className="h-6 w-6 flex-none" />
-                <span className="ml-2.5">Watch the video</span>
-              </Button>
+                Learn more
+              </Link>
             </div>
           </div>
           {/* <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">

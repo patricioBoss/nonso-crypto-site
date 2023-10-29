@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import React, { useEffect } from "react";
 import LandingLayout from "../components/landing-layout/LandingLayout";
 import { Accordion, Default } from "../helpers/Accordion";
@@ -7,20 +6,20 @@ import { Accordion, Default } from "../helpers/Accordion";
 let AllData = {
   general: [
     {
-      title: "About Ethervest",
+      title: "About  FidelityCryptoPro",
       content:
-        "Ethervest is a versatile investment platform that provides access to over 4,000 real estate/property investments, as well as global and local investment opportunities in stocks and cryptocurrencies. With favorable exchange rates, Ethervest makes investing in the UK clear and simple, while their nationwide management network offers full property management services.",
+        "FidelityCryptoPro is a cutting-edge cryptocurrency mining company leveraging AI to optimize mining operations, enhance efficiency, and amplify profitability for miners. Their innovative approach merges artificial intelligence with blockchain technology, positioning them at the forefront of the crypto mining industry.",
     },
     {
       title: "Our Platform",
       content:
-        " The platform allows users to invest in over 3,500 stocks listed on the U.S. stock market or their local exchanges in real-time, while also offering a range of cryptocurrency investment options. Ethervest makes funding easy and straightforward, allowing users to start investing with just a few clicks.",
+        " FidelityCryptoPro's platform enables users to invest in real-time across a vast selection of over 250 cryptocurrencies listed on their local exchanges, complemented by a diverse array of cryptocurrency investment opportunities. FidelityCryptoPro streamlines funding, ensuring a straightforward and effortless process, allowing users to initiate their cryptocurrency mining journey with just a few clicks.",
     },
     {
-      title: "How to Register on Ethervest",
+      title: "How to Register on FidelityCryptoPro",
       content: `
-    How to sign up on Ethervest
-Sure, here's a simple step-by-step guide on how to sign up on Ethervest:
+    How to sign up on FidelityCryptoPro
+Sure, here's a simple step-by-step guide on how to sign up on FidelityCryptoPro:
 <br>
 1. Open your preferred web browser and navigate to the stock investment web app's website.<br>
 2. Look for the "Sign Up" or "Register" button and click on it to start the registration process.<br>
@@ -34,8 +33,8 @@ Sure, here's a simple step-by-step guide on how to sign up on Ethervest:
   ],
   invest: [
     {
-      title: "Can I own multiple Investment asset on Ethervest?",
-      content: `Additionally, owning multiple investment assets on Ethervest can help diversify your investment portfolio. Diversification is a key investment strategy that helps reduce risk by spreading your investments across different asset classes. By owning multiple investment assets on Ethervest, you can minimize the impact of market fluctuations on your portfolio and potentially increase your returns over time.`,
+      title: "Can I own multiple Investment asset on FidelityCryptoPro?",
+      content: `Additionally, owning multiple investment assets on FidelityCryptoPro can help diversify your investment portfolio. Diversification is a key investment strategy that helps reduce risk by spreading your investments across different asset classes. By owning multiple investment assets on FidelityCryptoPro, you can minimize the impact of market fluctuations on your portfolio and potentially increase your returns over time.`,
     },
     {
       title: "Our Investment Cycle",

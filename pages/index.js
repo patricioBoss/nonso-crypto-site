@@ -12,6 +12,10 @@ import Section07 from "../components/landing-main-pages/section07.jsx";
 import Section08 from "../components/landing-main-pages/section08.jsx";
 import WidgetWall1 from "../components/landing-main-pages/WidgetWall1.jsx";
 import CalculatorSection from "../components/landing-main-pages/CalculatorSection.jsx";
+import DepositWithdrawal from "../components/landing-main-pages/DepositWithdrawal.jsx";
+import CertificateSection from "../components/landing-main-pages/CertificateSection.jsx";
+import TestimonialSection from "../components/landing-main-pages/TestimonialSection.jsx";
+import Script from "next/script.js";
 
 const TickerTape = dynamic(
   () => import("react-ts-tradingview-widgets").then((w) => w.TickerTape),
@@ -66,7 +70,6 @@ const tapeSymbol = [
 export default function Index({ marketData }) {
   const mounted = useRef(true);
   const router = useRouter();
-  console.log({ marketData });
   useEffect(() => {
     const { ref } = router.query;
 
@@ -75,7 +78,6 @@ export default function Index({ marketData }) {
         axios
           .get("/api/user/" + ref)
           .then((res) => {
-            console.log(res.data.data);
             localStorage.setItem("ref", JSON.stringify(res.data.data));
           })
           .catch((err) => {
@@ -89,14 +91,29 @@ export default function Index({ marketData }) {
   return (
     <>
       <div className=" bg-white">
-        <HeroSection />
+        <HeroSection marketData={marketData} />
         <PhoneChatSection />
         <Section05 />
         <Section08 />
         <WidgetWall1 />
         <Section07 />
+        <DepositWithdrawal marketData={marketData} />
         <CalculatorSection marketData={marketData} />
+        <CertificateSection />
+        <TestimonialSection />
       </div>
+      {router.pathname === "/" && (
+        <Script>
+          {`
+            easy_background("#home",
+                {
+                    slide: ["/img/bg/1.jpg", "/img/bg/2.jpg", "/img/bg/3.jpg"],
+                    delay: [4000, 4000, 4000]
+                }
+            );
+            `}
+        </Script>
+      )}
     </>
   );
 }

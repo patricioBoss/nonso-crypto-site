@@ -18,7 +18,14 @@ const TransactionSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["investment", "daily", "withdrawal", "bonus", "referral"],
+      enum: [
+        "investment",
+        "daily",
+        "withdrawal",
+        "bonus",
+        "referral",
+        "deposit",
+      ],
     },
   },
   {

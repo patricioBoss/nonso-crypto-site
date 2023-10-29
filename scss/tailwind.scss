@@ -29,8 +29,43 @@
   } */
 }
 
+/* Typography */
+.h1 {
+  @apply text-5xl font-bold;
+}
+
+.h2 {
+  @apply text-4xl font-bold;
+}
+
+.h3 {
+  @apply text-3xl font-bold;
+}
+
+.h4 {
+  @apply text-2xl font-bold;
+}
+
+@screen md {
+  .h1 {
+    @apply text-6xl;
+  }
+
+  .h2 {
+    @apply text-5xl;
+  }
+
+  .h3 {
+    @apply text-4xl;
+  }
+}
+
 #tradingview_widget_wrapper div:nth-child(2) {
   display: none !important;
+}
+
+.slider-four .tns-controls button {
+  z-index: 999 !important;
 }
 
 .swiper {
@@ -46,7 +81,9 @@
 .VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
   display: none !important;
 }
-
+.tns-visually-hidden {
+  display: none !important;
+}
 .swiper-slide {
   text-align: center;
   /* Center slide text vertically */
@@ -70,7 +107,10 @@
   blockquote {
   }
 }
-
+.tv-embed-widget-wrapper [class^="label-"] {
+  /* Your styling properties here */
+  display: none !important;
+}
 // FONTS
 @import "custom/fonts";
 

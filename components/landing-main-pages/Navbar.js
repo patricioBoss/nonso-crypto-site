@@ -12,25 +12,8 @@ const navLinks = [
     href: "/faq",
   },
   {
-    title: "Value streams",
-    sub: [
-      {
-        title: "Real Estate",
-        href: "/real-estate",
-      },
-      {
-        title: "cryptocurrency",
-        href: "/cryptocurrency",
-      },
-      {
-        title: "Stocks/bonds",
-        href: "/stocks",
-      },
-    ],
-  },
-  {
-    title: "Invest",
-    href: "invest",
+    title: "About Us",
+    href: "about",
   },
 ];
 
@@ -73,13 +56,13 @@ const Navbar = ({ isSticky }) => {
         <Link className="logo pl-0" href="/">
           <span className="inline-block">
             <img
-              src="/logo/Logo-full.svg"
+              src="/logo/logo-full-black.svg"
               className="h-4 md:h-8 l-dark"
               height="6"
               alt=""
             />
             <img
-              src="/logo/Logo-full-white.svg"
+              src="/logo/logo-full-white.svg"
               className="h-4 md:h-8 l-light"
               height="6"
               alt=""
@@ -105,7 +88,7 @@ const Navbar = ({ isSticky }) => {
           <li className="inline mb-0">
             <Link href="/login">
               <span className="login-btn-primary">
-                <span className="btn btn-icon rounded-full bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white">
+                <span className="btn btn-icon rounded-full bg-blue-600/5 hover:bg-blue-600 border-blue-600/10 hover:border-blue-600 text-blue-600 hover:text-white">
                   <i data-feather="settings" className="h-4 w-4"></i>
                 </span>
               </span>
@@ -120,7 +103,7 @@ const Navbar = ({ isSticky }) => {
           <li className="inline pl-1 mb-0">
             <Link href="/register">
               <span className="login-btn-primary">
-                <span className="btn btn-icon rounded-full bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white">
+                <span className="btn btn-icon rounded-full bg-blue-600/5 hover:bg-blue-600 border-blue-600/10 hover:border-blue-600 text-blue-600 hover:text-white">
                   <BsFillPersonPlusFill className=" text-current h-5 w-5" />
                 </span>
               </span>

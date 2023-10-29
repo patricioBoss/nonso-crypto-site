@@ -1,6 +1,5 @@
 import Image from "next/image";
 import LogosIllustration from "../../public/img/logos-illustration.svg";
-import Logos from "../../public/img/logos.png";
 
 export default function Section05() {
   return (
@@ -8,7 +7,7 @@ export default function Section05() {
       <div className="relative max-w-7xl mx-auto">
         {/* Bg */}
         <div
-          className="absolute inset-0 bg-dark-footer rounded-tr-[100px] pointer-events-none"
+          className="absolute inset-0 rounded-tr-[100px] bg-gradient-to-tr from-blue-600 to-blue-500 pointer-events-none"
           aria-hidden="true"
         />
 
@@ -36,12 +35,18 @@ export default function Section05() {
               >
                 <div className="relative">
                   <Image
-                    className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none -z-10 max-w-none mix-blend-lighten"
+                    className=" absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none max-w-none mix-blend-lighten"
                     src={LogosIllustration}
                     alt="Logos illustration"
-                    aria-hidden="true"
+                    // aria-hidden="true"
                   />
-                  <Image src={Logos} width={720} height={283} alt="Logos" />
+                  <Image
+                    src={"/img/logos.png"}
+                    width={720}
+                    height={283}
+                    alt="Logos"
+                    className="relative z-10"
+                  />
                 </div>
               </div>
 
@@ -59,11 +64,11 @@ export default function Section05() {
                     </div>
                   </div>
                   <h4 className="text-white text-xl font-bold mb-1">
-                    Download the app
+                    Register
                   </h4>
                   <p className="text-blue-200">
-                    Create cards that work exactly as you configured them. Make
-                    real-time decisions on charges and spendings.
+                    Look for the &quot;Sign Up&quot; or &quot;Register button
+                    and click on it to start the registration process.
                   </p>
                 </div>
 
@@ -75,11 +80,12 @@ export default function Section05() {
                     </div>
                   </div>
                   <h4 className="text-white text-xl font-bold mb-1">
-                    Request your card
+                    Additional verification
                   </h4>
                   <p className="text-blue-200">
-                    Create cards that work exactly as you configured them. Make
-                    real-time decisions on charges and spendings.
+                    Complete all necessary verification processes, Additionally,
+                    provide accurate withdrawal addresses tailored to each
+                    respective cryptocurrency.
                   </p>
                 </div>
 
@@ -91,11 +97,12 @@ export default function Section05() {
                     </div>
                   </div>
                   <h4 className="text-white text-xl font-bold mb-1">
-                    Connect all your account
+                    Invest Now
                   </h4>
                   <p className="text-blue-200">
-                    Create cards that work exactly as you configured them. Make
-                    real-time decisions on charges and spendings.
+                    Deposit funds into your wallet and select an appropriate
+                    plan tailored to your preferences, ensuring you receive a
+                    daily return on your investment (ROI)
                   </p>
                 </div>
               </div>

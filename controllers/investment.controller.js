@@ -46,19 +46,115 @@ export const getPaidInvestments = async (req, res) => {
 };
 
 export const invest = async (req, res) => {
-  let invest = new Investment({
-    userId: req.profile._id,
-    status: "pending",
-    ...req.body,
-  });
+  const profile = req.profile;
+  const currentBalance = req.profile.accountBalance;
+  const { capital } = req.body;
+  let loginLink = `https://${config.domain}/login`;
+  if (parseInt(capital) > currentBalance) {
+    return response(
+      res,
+      400,
+      "cannot invest more than your current balance",
+      null
+    );
+  }
   try {
-    const result = await invest.save();
-    if (result) {
-      response(res, 200, "success", result);
-    }
+    const session = await req.db.startSession();
+    await session.withTransaction(async () => {
+      const investment = await Investment.create(
+        [
+          {
+            userId: req.profile._id,
+            status: "active",
+            ...req.body,
+            approvedDate: Date.now(),
+            withDrawalDate: add(new Date(), { days: 15 }).toISOString(),
+            transactionId: "invest-" + uuidv4(),
+          },
+        ],
+        { session }
+      );
+      const investmentId = investment[0]._id;
+      const message = `${profile.firstName}, your ${
+        plans[investment[0].planId].name
+      } investment plan of ${fCurrency(
+        investment[0].capital
+      )} has been approved, enjoy daily rio on investment`;
+      let msg = sampleMailTemplate(profile.firstName, loginLink, message);
+
+      await sendMail(msg, "Investment Update", profile.email);
+      let referUser = await User.findByIdAndUpdate(
+        req.profile.referer,
+        {
+          $inc: {
+            accountBalance: Number((10 / 100) * investment[0].capital),
+          },
+        },
+        {
+          session,
+          new: true,
+          runValidators: true,
+        }
+      );
+      const normalizeLevel =
+        req.profile.level === 0 ? 0 : req.profile.level - 1;
+
+      // console.log({ normalizeLevel, invt: invest.planId });
+      if (invest.planId >= normalizeLevel) {
+        await User.findByIdAndUpdate(
+          req.profile._id,
+          {
+            level: invest.planId,
+          },
+          {
+            session,
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+
+      await Transaction.create(
+        [
+          {
+            amount: investment.capital,
+            investmentId,
+            currentBalance: req.profile.accountBalance,
+            type: "investment",
+            userId: req.profile._id,
+          },
+          ...(req.profile.referer
+            ? [
+                {
+                  amount: investment.capital,
+                  investmentId,
+                  currentBalance: referUser.accountBalance,
+                  type: "referral",
+                  userId: req.profile.referer,
+                },
+              ]
+            : []),
+        ],
+        { session }
+      );
+    });
+
+    await session.commitTransaction();
+    session.endSession();
+    return response(res, 200, "investment approved.");
   } catch (err) {
+    console.log(err);
     return response(res, 500, "failure", null);
   }
+
+  // try {
+  //   const result = await invest.save();
+  //   if (result) {
+  //     response(res, 200, "success", result);
+  //   }
+  // } catch (err) {
+  //   return response(res, 500, "failure", null);
+  // }
 };
 export const updateInvt = async (req, res) => {
   try {
@@ -92,7 +188,7 @@ export const pauseInvestment = async (req, res) => {
     if (req.body.status === "active") {
       query = {
         ...req.body,
-        withDrawalDate: add(new Date(), { days: 5 - daysCount }).toISOString(),
+        withDrawalDate: add(new Date(), { days: 15 - daysCount }).toISOString(),
       };
     }
     let invest = await Investment.findByIdAndUpdate(_id, query, {
@@ -169,7 +265,7 @@ export const approveInvestment = async (req, res) => {
         {
           approvedDate: Date.now(),
           status: "active",
-          withDrawalDate: add(new Date(), { days: 5 }).toISOString(),
+          withDrawalDate: add(new Date(), { days: 15 }).toISOString(),
         },
         { session, new: true }
       ).exec();
@@ -270,7 +366,7 @@ export const topupInvestment = async (req, res) => {
           capital: newCapital,
           approvedDate: Date.now(),
           status: "active",
-          withDrawalDate: add(new Date(), { days: 5 }).toISOString(),
+          withDrawalDate: add(new Date(), { days: 15 }).toISOString(),
         },
         { session, new: true }
       ).exec();
@@ -351,7 +447,7 @@ export const reinvest = async (req, res) => {
             transactionId: "REI-" + uuidv4(),
             approvedDate: Date.now(),
             status: "active",
-            withDrawalDate: add(new Date(), { days: 5 }).toISOString(),
+            withDrawalDate: add(new Date(), { days: 15 }).toISOString(),
           },
         ],
         { session, new: true }

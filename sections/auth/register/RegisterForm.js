@@ -56,6 +56,10 @@ export default function RegisterForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const RegisterSchema = Yup.object().shape({
+    userName: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("User name required"),
     firstName: Yup.string()
       .min(2, "Too Short!")
       .max(50, "Too Long!")
@@ -79,6 +83,7 @@ export default function RegisterForm() {
 
   const formik = useFormik({
     initialValues: {
+      userName: "",
       firstName: "",
       lastName: "",
       country: "",
@@ -112,7 +117,9 @@ export default function RegisterForm() {
     },
   });
 
-  const handleCountryChange = () => {};
+  const handleCountryChange = (e) => {
+    console.log({ e });
+  };
   const handleSelectClick = (index) => {
     setCurrentCountry(CountryRegionData[index]);
   };
@@ -123,6 +130,14 @@ export default function RegisterForm() {
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
+          <TextField
+            fullWidth
+            label="User name"
+            type="text"
+            {...getFieldProps("userName")}
+            error={Boolean(touched.userName && errors.userName)}
+            helperText={touched.userName && errors.userName}
+          />
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
             <TextField
               fullWidth
@@ -180,7 +195,7 @@ export default function RegisterForm() {
 
           <TextField
             fullWidth
-            autoComplete="username"
+            autoComplete="email"
             type="email"
             label="Email address"
             {...getFieldProps("email")}

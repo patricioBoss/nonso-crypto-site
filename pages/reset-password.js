@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 import { useFormik, Form, FormikProvider } from "formik";
 // components
 import Page from "../components/Page";
-import Logo from "../components/Logo";
+// import Logo from "../components/Logo";
 import Layout from "../layouts";
 
 // ----------------------------------------------------------------------

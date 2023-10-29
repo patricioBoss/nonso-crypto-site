@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from "react";
-
+import Link from "next/link";
+import TypewriterComponent from "typewriter-effect";
+import { capitalCase } from "change-case";
+import numeral from "numeral";
 const settings = {
   container: ".tiny-home-slide-four",
   controls: true,
@@ -11,8 +14,8 @@ const settings = {
   autoplayTimeout: 3000,
   navPosition: "bottom",
   controlsText: [
-    '<i class="mdi mdi-chevron-left "></i>',
-    '<i class="mdi mdi-chevron-right"></i>',
+    '<i class="mdi mdi-chevron-left translate-x-6 "></i>',
+    '<i class="mdi mdi-chevron-right "></i>',
   ],
   nav: false,
   speed: 400,
@@ -36,7 +39,7 @@ const settings = {
   },
 };
 
-const HeroSection = () => {
+const HeroSection = ({ marketData }) => {
   const isMounted = useRef(true);
   useEffect(() => {
     if (isMounted.current) {
@@ -46,26 +49,52 @@ const HeroSection = () => {
   }, []);
   return (
     <>
-      <section className="relative table w-full py-52 md:py-64 bg-[url('/img/crypto/bg1.jpg')] bg-center bg-no-repeat">
-        <div className="container">
-          <div className="grid grid-cols-1">
-            <h4 className="text-white font-semibold lg:leading-normal leading-normal text-4xl lg:text-5xl mb-5">
-              Building the future <br /> of Crypto Revolution.
+      <section
+        className=" py-36 md:h-screen h-auto items-center flex relative"
+        id="home"
+      >
+        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="container relative">
+          <div className="grid grid-cols-1 mb-8 md:mb-0">
+            <h4 className="text-white lg:text-5xl text-4xl lg:leading-normal leading-normal font-semibold mb-7 position-relative">
+              Create The Future You <br />
+              Desire Today. Let&apos;s{" "}
+              {/* <span
+              className="typewrite relative text-type-element"
+              data-period="2000"
+              data-type='[ "Business", "Startups", "Digital Agency", "Marketing" ]'
+            ></span> */}
+              <span>
+                <TypewriterComponent
+                  options={{
+                    wrapperClassName: "typewrite relative text-type-element",
+                    strings: [
+                      "Start Your Journey.",
+                      "Invest Smarter.",
+                      "Grow Together.",
+                    ],
+                    autoStart: true,
+
+                    loop: true,
+                  }}
+                />
+              </span>
             </h4>
-            <p className="text-white/70 max-w-xl mb-0">
-              At Ethervest, we understand the complexities of cryptocurrency
-              investing and have developed a streamlined approach to help
-              investors navigate the market.
+
+            <p className="text-white opacity-50 mb-0 max-w-2xl text-lg">
+              Step into a realm of unparalleled potential. We combine artificial
+              intelligence and cryptocurrency mining for a seamless, efficient,
+              and rewarding journey.
             </p>
 
-            <div className="subcribe-form mt-6 mb-4"></div>
-
-            <span className="text-white">
-              Looking for help?{" "}
-              <a href="" className="text-amber-500">
-                Get in touch with us
-              </a>
-            </span>
+            <div className="relative mt-10">
+              <Link
+                href="/register"
+                className="btn bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md"
+              >
+                Get Started
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -81,43 +110,38 @@ const HeroSection = () => {
                     </h5>
                   </div>
 
-                  <div className="lg:col-span-8 md:col-span-6 col-span-7 relative overflow-hidden">
+                  <div className="slider-four lg:col-span-8 md:col-span-6 col-span-7 relative overflow-hidden">
                     <div className="tiny-home-slide-four flex ">
-                      <div className="tiny-slide">
-                        <div className="text-center">
-                          <h6 className="text-white mb-1">Bitcoin</h6>
-                          <span className="text-white/50 block">$ 41245</span>
-                          <span className="text-red-600">- 3.5%</span>
-                        </div>
-                      </div>
-                      <div className="tiny-slide">
-                        <div className="text-center">
-                          <h6 className="text-white mb-1">Litecoin</h6>
-                          <span className="text-white/50 block">$ 216</span>
-                          <span className="text-emerald-600">+ 3.5%</span>
-                        </div>
-                      </div>
-                      <div className="tiny-slide">
-                        <div className="text-center">
-                          <h6 className="text-white mb-1">Ethereum</h6>
-                          <span className="text-white/50 block">$ 451</span>
-                          <span className="text-emerald-600">+ 3.5%</span>
-                        </div>
-                      </div>
-                      <div className="tiny-slide">
-                        <div className="text-center">
-                          <h6 className="text-white mb-1">Blocknet</h6>
-                          <span className="text-white/50 block">$ 845</span>
-                          <span className="text-emerald-600">+ 3.5%</span>
-                        </div>
-                      </div>
-                      <div className="tiny-slide">
-                        <div className="text-center">
-                          <h6 className="text-white mb-1">Monero</h6>
-                          <span className="text-white/50 block">$ 654</span>
-                          <span className="text-red-600">- 3.5%</span>
-                        </div>
-                      </div>
+                      {marketData
+                        .slice(0, 5)
+                        .map(
+                          ({
+                            name,
+                            current_price,
+                            price_change_percentage_24h,
+                          }) => (
+                            <div key={name} className="tiny-slide">
+                              <div className="text-center">
+                                <h6 className="text-white mb-1">{name}</h6>
+                                <span className="text-white/50 block">
+                                  $ {current_price}
+                                </span>
+                                <span
+                                  className={
+                                    price_change_percentage_24h >= 0
+                                      ? "text-emerald-600"
+                                      : "text-red-600"
+                                  }
+                                >
+                                  {numeral(price_change_percentage_24h).format(
+                                    "0.0"
+                                  )}
+                                  %
+                                </span>
+                              </div>
+                            </div>
+                          )
+                        )}
                     </div>
                   </div>
                 </div>

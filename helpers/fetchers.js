@@ -13,16 +13,15 @@ export const getQuotes = async (quoteString) => {
 };
 
 export const getCoinPrices = async () => {
-  const { data } = await axios.get(
-    "https://rest.coinapi.io/v1/assets?filter_asset_id=BTC,USDT,ETH",
-    {
-      headers: {
-        "X-CoinAPI-Key": "8A225100-549E-40E0-B77E-B3FF29371649",
-      },
-    }
-  );
-  return data.reduce((acc, coindata) => {
-    acc[coindata.asset_id] = coindata;
-    return acc;
-  }, {});
+  const { data: cryptoDataList } = await axios({
+    baseURL: "https://api.coingecko.com",
+    method: "GET",
+    url: "/api/v3/coins/markets",
+    params: {
+      vs_currency: "usd",
+      ids: "bitcoin,tether,ethereum",
+    },
+  });
+
+  return cryptoDataList;
 };

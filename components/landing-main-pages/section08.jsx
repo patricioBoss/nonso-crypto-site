@@ -45,11 +45,10 @@ const Section08 = () => {
               <span>Safety, security and compliance</span>
             </div>{" "}
             <p className="text-sm text-gray-700 leading-relaxed">
-              NEFA is a licensed New York trust company that undergoes regular
-              bank exams and is subject to the cybersecurity audits conducted by
-              the New York Department of Financial Services.
-              <span className="underline">Learn more</span> about our commitment
-              to security.
+              We Focus on identifying, assessing, and managing the potential
+              risks that come with an investment. Finding and leveraging on
+              trained optimal algorithm to identify and filter potiential high
+              valuie stocks.
             </p>
           </li>{" "}
           <li className="space-y-2">
@@ -69,11 +68,14 @@ const Section08 = () => {
                   <path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"></path>
                 </svg>
               </span>{" "}
-              <span>Hardware security keys</span>
+              <span>Cryptic security keys</span>
             </div>{" "}
             <p className="text-sm text-gray-700 leading-relaxed">
-              With NEFA you can secure your account with a hardware security key
-              via WebAuthn.
+              Cryptography plays a critical role in enhancing security measures.
+              It involves the use of mathematical algorithms to encode
+              information, making it unreadable to unauthorized users. This
+              encryption process safeguards sensitive data during transmission
+              or storage, ensuring confidentiality and integrity.
             </p>
           </li>{" "}
           <li className="space-y-2">
@@ -93,13 +95,11 @@ const Section08 = () => {
                   <path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"></path>
                 </svg>
               </span>{" "}
-              <span>SOC Certifications</span>
+              <span>Covered by US SEC</span>
             </div>{" "}
             <p className="text-sm text-gray-700 leading-relaxed">
-              NEFA is <span className="underline">SOC 1 Type 2</span> and
-              <span className="underline">SOC 2 Type 2</span> compliant. We are
-              the world’s first cryptocurrency exchange and custodian to
-              complete these exams.
+              Trading accounts are held by our partners, a firm duly registered
+              by the Securities and Exchange Commission in the US and our U.S
             </p>
           </li>
         </ul>

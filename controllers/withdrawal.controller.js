@@ -15,9 +15,14 @@ export const makeWithdrawal = async (req, res) => {
   console.log(req.body);
 
   try {
-    // if (parseInt(amount) < 600) {
-    //   return response(res, 400, "cannot withdrawl less than 600", null);
-    // }
+    if (parseInt(amount) > currentBalance) {
+      return response(
+        res,
+        400,
+        "cannot withdrawl more than your current balance",
+        null
+      );
+    }
     if (!Object.values(req.profile.wallets).some((x) => x)) {
       return response(res, 404, "wallet not found", null);
     }

@@ -22,7 +22,7 @@ import "react-lazy-load-image-component/src/effects/black-and-white.css";
 import PropTypes from "prop-types";
 import cookie from "cookie";
 // next
-import Head from "next/head";
+
 import App from "next/app";
 // utils
 import { getSettings } from "../utils/settings";
@@ -60,13 +60,13 @@ export default function MyApp(props) {
   return (
     <>
       <DefaultSeo
-        title="Elizabeth Ann Graney | Wealth Management"
-        description="Elizabeth Ann Graney can help you achieve your financial goals. Learn about Retirement, Investing, Family, Business Planning, Philanthropy, and Financial Wellness."
+        title="FidelityCryptoPro - AI Crypto Mining for Optimal Profits"
+        description="Experience AI-powered cryptocurrency mining with FidelityCryptoPro. Maximize profitability and efficiency. Join us today!"
         openGraph={{
           type: "website",
           locale: "en-GB",
           url: "https://advisor.elizabethanngraney.com",
-          siteName: "Elizabeth Ann Graney Portfolio website",
+          siteName: "FidelityCryptoPro AI mining",
           profile: {
             firstName: "Elizabeth Ann Graney",
             lastName: "Graney",
@@ -93,7 +93,12 @@ export default function MyApp(props) {
         additionalLinkTags={[
           {
             rel: "icon",
+            type: "text/css",
             href: "/favicon.ico",
+          },
+          {
+            rel: "stylesheet",
+            href: "/icons/@iconscout/unicons/css/line.css",
           },
         ]}
       />

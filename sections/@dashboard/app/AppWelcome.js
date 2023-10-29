@@ -63,7 +63,7 @@ export default function AppWelcome({ displayName }) {
 
         <Typography
           variant="body2"
-          sx={{ pb: { xs: 3, xl: 3 }, maxWidth: 480, mx: "auto" }}
+          sx={{ pb: { xs: 3, xl: 3 }, maxWidth: 480 }}
         >
           {`Grow your funds with a diverse array of the best portfolios. We guarantee risk-free trading.`}
         </Typography>

@@ -2,8 +2,6 @@ import { Box, Button, Container, Grid, Modal, Typography } from "@mui/material";
 import { useState } from "react";
 // layouts
 import Layout from "../../layouts";
-// hooks
-import { useTheme } from "@mui/material/styles";
 //ironSession
 import pageAuth from "../../middleware/pageAuthAccess";
 import useSettings from "../../hooks/useSettings";
@@ -27,6 +25,7 @@ import { LoadingButton } from "@mui/lab";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import RealEstateBanner from "../../components/RealEstateBanner/RealEstateBanner";
+import cryptoList from "../../helpers/crypto";
 
 // ----------------------------------------------------------------------
 const style = {
@@ -59,7 +58,12 @@ async function handler({ req }) {
           $and: [
             { userId: req.user._id },
             {
-              $or: [{ type: "daily" }, { type: "bonus" }, { type: "referral" }],
+              $or: [
+                { type: "daily" },
+                { type: "bonus" },
+                { type: "referral" },
+                { type: "deposit" },
+              ],
             },
           ],
         },
@@ -82,33 +86,29 @@ async function handler({ req }) {
       await Withdrawal.find({ userId: user._id }).lean()
     );
     console.log(totalEarnings, allApprovedInvestment, withdrawalList);
-    // withdrawalList.map(list=>())
-    const stocksListString = Object.keys(stocks).join(",");
-    const stocksResponse = await axios(
-      {
-        baseURL: process.env.NEXT_PUBLIC_IMAGE_SERVER,
-        method: "GET",
-        url: "/yahooapi/quotes",
-        // params: {
-        //   symbols: stocksListString,
-        // },
-      }
-      // `https://query1.finance.yahoo.com/v6/finance/quote?symbols=${stocksListString}`
-    );
+    const stocksListString = Object.keys(cryptoList).join(",");
+    const { data: cryptoDataList } = await axios({
+      baseURL: "https://api.coingecko.com",
+      method: "GET",
+      url: "/api/v3/coins/markets",
+      params: {
+        vs_currency: "usd",
+        ids: stocksListString,
+      },
+    });
 
-    const stocksDataArray = await stocksResponse.data.data;
-
-    const stockListArray = Object.keys(stocks).map((symbol) =>
+    console.log(cryptoDataList.map(({ symbol }) => symbol));
+    const stockListArray = cryptoDataList.map(({ symbol }) =>
       axios.get(
-        `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?metrics=high&interval=30m&range=1d`
+        `https://query1.finance.yahoo.com/v8/finance/chart/${symbol.toUpperCase()}-USD?metrics=high&interval=30m&range=1d`
       )
     );
     const stockQuoteList = await Promise.all(stockListArray);
 
-    let stocksDataList = stocksDataArray.map((stock, idx) => {
+    let stocksDataList = cryptoDataList.map((stock, idx) => {
       return {
-        ...stock,
         ...stockQuoteList[idx].data.chart.result[0].meta,
+        ...stock,
       };
     });
     return {

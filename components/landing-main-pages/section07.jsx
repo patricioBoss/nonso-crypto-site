@@ -3,7 +3,11 @@
 // import Pricing02 from "@/public/images/pricing-02.png";
 // import Pricing03 from "@/public/images/pricing-03.png";
 // import Pricing04 from "@/public/images/pricing-04.png";
-
+import { capitalCase } from "change-case";
+import plans from "../../helpers/plans";
+import numeral from "numeral";
+import Image from "next/image";
+import Link from "next/link";
 export default function Section07() {
   return (
     <section>
@@ -25,11 +29,12 @@ export default function Section07() {
               {/* Section header */}
               <div className="md:max-w-3xl mb-12 md:mb-20" data-aos="fade-up">
                 <h2 className="h2 mb-4">
-                  Get the only custom super card you&apos;ll ever need
+                  Discover Your Path to Prosperity: Explore Our Exciting
+                  Investment Plans
                 </h2>
                 <p className="text-lg text-slate-500 mb-8">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Unveil our Exciting Investment Plans and Secure Your Financial
+                  Future Today
                 </p>
               </div>
 
@@ -40,84 +45,113 @@ export default function Section07() {
                 data-aos-delay="100"
               >
                 {/* Pricing table 1 */}
-                <div className="relative flex flex-col h-full rounded-br-[100px] py-5 px-6">
-                  <div className="mb-4">
-                    <div className="text-lg font-bold text-center mb-3">
-                      Starter
-                    </div>
 
-                    <div className=" h-[124px] w-[210px] bg-black" />
-                  </div>
-                  <div className="mb-5">
-                    <div className="text-2xl text-slate-800 font-bold text-center mb-4">
-                      $0/m
-                    </div>
-                    <a
-                      className="btn-sm w-full inline-flex items-center text-blue-50 bg-blue-500 hover:bg-blue-600 shadow-sm"
-                      href="#0"
+                {plans.map(
+                  ({ id, name, interest, minimum, maximum, img }, index) => (
+                    <div
+                      key={id}
+                      className={
+                        "relative flex flex-col h-full rounded-br-[100px] py-5 px-6 " +
+                        (index === 3 &&
+                          " bg-gradient-to-b from-blue-100 to-blue-50")
+                      }
                     >
-                      Get Starter
-                    </a>
-                  </div>
-                  <div className="text-slate-800 font-medium mb-4">
-                    Features include
-                  </div>
-                  <ul className="text-slate-500 text-left space-y-2">
-                    <li className="flex items-start">
-                      <svg
-                        className="w-3 h-3 fill-current text-teal-500 mr-3 mt-1.5 shrink-0"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
-                      </svg>
-                      <span>Contactless payments</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg
-                        className="w-3 h-3 fill-current text-teal-500 mr-3 mt-1.5 shrink-0"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
-                      </svg>
-                      <span>Mobile payments</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg
-                        className="w-3 h-3 fill-current text-teal-500 mr-3 mt-1.5 shrink-0"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
-                      </svg>
-                      <span>Extra card (optional)</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg
-                        className="w-3 h-3 fill-current text-teal-500 mr-3 mt-1.5 shrink-0"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
-                      </svg>
-                      <span>Free payments worldwide</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg
-                        className="w-3 h-3 fill-current text-teal-500 mr-3 mt-1.5 shrink-0"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
-                      </svg>
-                      <span>Free domestic ATM withdrawals</span>
-                    </li>
-                  </ul>
-                </div>
+                      {index === 3 && (
+                        <div className="absolute top-0 right-0 -translate-y-1/2 mr-6 inline-flex text-sm text-white bg-teal-500 font-[550] rounded-full px-3 py-px">
+                          Popular
+                        </div>
+                      )}
+                      <div className="mb-4">
+                        <div className="text-lg font-bold text-center mb-3">
+                          {capitalCase(name)}
+                        </div>
 
+                        <Image
+                          src={img}
+                          height={124}
+                          width={210}
+                          className=" rounded-lg"
+                        />
+                      </div>
+                      <div className="mb-5">
+                        <div className="text-2xl text-slate-800 font-bold text-center mb-4">
+                          <span className=" text-xl">$</span>{" "}
+                          {numeral(interest).format("0.00")}/
+                          <span className="text-base">(15days)</span>
+                        </div>
+                        <Link
+                          className=" py-2 rounded-full text-sm justify-center  w-full inline-flex items-center text-blue-50 bg-blue-500 hover:bg-blue-600 shadow-sm"
+                          href="/register"
+                        >
+                          Get Started
+                        </Link>
+                      </div>
+                      <div className="text-slate-800 font-medium mb-4">
+                        Features include
+                      </div>
+                      <ul className="text-slate-500 text-left space-y-2">
+                        <li className="flex items-start">
+                          <svg
+                            className="w-3 h-3 fill-current text-teal-500 mr-3 mt-1.5 shrink-0"
+                            viewBox="0 0 12 12"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                          </svg>
+                          <span>
+                            ${numeral(minimum).format("0,0")}Min. Deposit
+                          </span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg
+                            className="w-3 h-3 fill-current text-teal-500 mr-3 mt-1.5 shrink-0"
+                            viewBox="0 0 12 12"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                          </svg>
+                          <span>
+                            ${numeral(maximum).format("0,0")}Max. Deposit
+                          </span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg
+                            className="w-3 h-3 fill-current text-teal-500 mr-3 mt-1.5 shrink-0"
+                            viewBox="0 0 12 12"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                          </svg>
+                          <span>10% Bonus Referral</span>
+                        </li>
+                        <li className="flex items-start">
+                          <svg
+                            className="w-3 h-3 fill-current text-teal-500 mr-3 mt-1.5 shrink-0"
+                            viewBox="0 0 12 12"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                          </svg>
+                          <span>You get back your capital</span>
+                        </li>
+                        {index === 3 && (
+                          <li className="flex items-start">
+                            <svg
+                              className="w-3 h-3 fill-current text-teal-500 mr-3 mt-1.5 shrink-0"
+                              viewBox="0 0 12 12"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                            </svg>
+                            <span>Become Our Representatives</span>
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+                  )
+                )}
                 {/* Pricing table 2 */}
-                <div className="relative flex flex-col h-full bg-gradient-to-b from-blue-100 to-blue-50 rounded-br-[100px] py-5 px-6">
+                {/* <div className="relative flex flex-col h-full bg-gradient-to-b from-blue-100 to-blue-50 rounded-br-[100px] py-5 px-6">
                   <div className="absolute top-0 right-0 -translate-y-1/2 mr-6 inline-flex text-sm text-white bg-teal-500 font-[550] rounded-full px-3 py-px">
                     Popular
                   </div>
@@ -213,10 +247,10 @@ export default function Section07() {
                       <span>Discounted domestic transfers</span>
                     </li>
                   </ul>
-                </div>
+                </div> */}
 
                 {/* Pricing table 3 */}
-                <div className="relative flex flex-col h-full rounded-br-[100px] py-5 px-6">
+                {/* <div className="relative flex flex-col h-full rounded-br-[100px] py-5 px-6">
                   <div className="mb-4">
                     <div className="text-lg font-bold text-center mb-3">
                       You
@@ -291,10 +325,10 @@ export default function Section07() {
                       </span>
                     </li>
                   </ul>
-                </div>
+                </div> */}
 
                 {/* Pricing table 4 */}
-                <div className="relative flex flex-col h-full rounded-br-[100px] py-5 px-6">
+                {/* <div className="relative flex flex-col h-full rounded-br-[100px] py-5 px-6">
                   <div className="mb-4">
                     <div className="text-lg font-bold text-center mb-3">
                       Black
@@ -367,7 +401,7 @@ export default function Section07() {
                       <span>Free foreign exchange</span>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

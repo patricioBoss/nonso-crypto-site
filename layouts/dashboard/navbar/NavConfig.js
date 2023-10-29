@@ -3,6 +3,7 @@ import SvgIconStyle from "../../../components/SvgIconStyle";
 import { FiHome } from "react-icons/fi";
 import { GiWallet } from "react-icons/gi";
 import { AiFillSetting } from "react-icons/ai";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { BsCreditCard2Back, BsFillHddStackFill } from "react-icons/bs";
 import { UserGroupIcon } from "@heroicons/react/24/solid";
 import { HomeModernIcon } from "@heroicons/react/24/outline";
@@ -23,6 +24,7 @@ const ICONS = {
   portfolio: <BsFillHddStackFill />,
   affiliate: <UserGroupIcon />,
   realestate: <HomeModernIcon />,
+  deposit: <RiMoneyDollarCircleLine />,
 };
 
 const sidebarConfig = [
@@ -32,21 +34,11 @@ const sidebarConfig = [
     items: [
       { title: "Dashboard", path: "/dashboard/home", icon: ICONS.dashboard },
       {
-        title: "Portfolios",
-        path: "/dashboard/portfolio",
-        icon: ICONS.portfolio,
-      },
-      {
-        title: "Real Estate",
-        path: "/dashboard/realestate",
-        icon: ICONS.realestate,
-      },
-      {
         title: "Investments",
         path: "/dashboard/invest",
         children: [
+          { title: "Invest", path: "/dashboard/invest/" },
           { title: "Investments", path: "/dashboard/invest/all" },
-          { title: "Pending Invt.", path: "/dashboard/invest/pend" },
         ],
         icon: ICONS.analytics,
       },
@@ -56,6 +48,15 @@ const sidebarConfig = [
         title: "Withdrawal",
         path: "/dashboard/withdrawal",
         icon: ICONS.withdrawal,
+      },
+      {
+        title: "Deposit",
+        path: "/dashboard/deposit",
+        children: [
+          { title: "Make Deposit", path: "/dashboard/deposit/create" },
+          { title: "All Deposits", path: "/dashboard/deposit/list" },
+        ],
+        icon: ICONS.deposit,
       },
     ],
   },

@@ -3,6 +3,8 @@ import Exchange from "./component/Exchange";
 import { useState } from "react";
 import BaseButton from "./component/BaseButton";
 import dynamic from "next/dynamic";
+import getNextPlanId from "../../utils/getNextPlanId";
+import Link from "next/link";
 const StockMarket = dynamic(
   () => import("react-ts-tradingview-widgets").then((w) => w.StockMarket),
   {
@@ -12,24 +14,19 @@ const StockMarket = dynamic(
 
 const currencies = [
   {
-    img: "/img/country-icon/eng.png",
+    image: "/img/country-icon/eng.png",
     name: "USD",
   },
 ];
 
 const currencySelected = {
-  img: "/img/country-icon/eng.png",
+  image: "./img/country-icon/eng.png",
   name: "USD",
 };
 
 const CalculatorSection = ({ marketData }) => {
-  const [amount, setAmount] = useState("0");
-  const [selected, setSlected] = useState(marketData[2]);
-  const handleSelect = (coin) => {
-    setSlected(coin);
-  };
   return (
-    <div className=" py-24 overflow-hidden">
+    <div className=" py-28 overflow-hidden">
       <div className="relative max-w-screen-xl px-4 sm:px-8 mx-auto grid grid-cols-12 gap-x-6 ">
         <svg
           className="absolute left-full hidden -translate-x-1/2 -translate-y-1/4 transform lg:block"
@@ -111,44 +108,16 @@ const CalculatorSection = ({ marketData }) => {
           className="col-span-12 lg:col-span-6 mt-4 xl:mt-20 space-y-6 px-4"
         >
           <h2 className="text-4xl font-semibold sm:pr-8 xl:pr-12">
-            Buy & trade on the <br className="hidden sm:block" />
-            original crypto exchange.
+            {/* Buy & trade on the <br className="hidden sm:block" />
+            original crypto exchange. */}
+            Achieve a remarkable up <br className="hidden sm:block" /> 20% to
+            ROI
           </h2>
           <p className="paragraph">
-            Buy now and get 40% extra bonus Minimum pre-sale amount 25 Crypto
-            Coin. We accept BTC crypto-currency
+            Maximize your returns on investment by aiming for an impressive up
+            to 20% Return on Investment (ROI).
           </p>
-          <div className="space-y-6 lg:pr-12">
-            <Exchange
-              title="Amount"
-              name="amount"
-              type="number"
-              value={amount}
-              onChange={({ target: { value } }) => setAmount(value)}
-              exchangeSelected={currencySelected}
-              exchanges={currencies}
-            />
-            <Exchange
-              title="Get"
-              name="get"
-              type="number"
-              disabled
-              defaultValue="0.10901"
-              onDropdownSelect={handleSelect}
-              exchangeSelected={selected}
-              exchanges={marketData.map(
-                ({ name, image, current_price, symbol }) => ({
-                  name,
-                  image,
-                  current_price,
-                  symbol,
-                })
-              )}
-            />
-            <BaseButton style="w-full px-5 py-4 bg-blue-500 text-white text-base font-medium">
-              Buy Now
-            </BaseButton>
-          </div>
+          <Calculator marketData={marketData} />
         </div>
         <div
           data-aos="fade-left"
@@ -198,3 +167,48 @@ const CalculatorSection = ({ marketData }) => {
 };
 
 export default CalculatorSection;
+
+const Calculator = ({ marketData }) => {
+  const [amount, setAmount] = useState("0");
+  const [selected, setSlected] = useState(marketData[2]);
+  const handleSelect = (coin) => {
+    setSlected(coin);
+  };
+  console.log({ next: getNextPlanId(Number(amount)) });
+  return (
+    <div className="space-y-6 lg:pr-12">
+      <Exchange
+        title="Amount"
+        name="amount"
+        type="number"
+        value={amount}
+        onChange={({ target: { value } }) => setAmount(value)}
+        exchangeSelected={currencySelected}
+        exchanges={currencies}
+      />
+      <Exchange
+        title="Get"
+        name="get"
+        type="number"
+        disabled
+        value={
+          (Number(getNextPlanId(Number(amount)).interest / 100) * amount * 15) /
+          selected.current_price
+        }
+        onDropdownSelect={handleSelect}
+        exchangeSelected={selected}
+        exchanges={marketData.map(({ name, image, current_price, symbol }) => ({
+          name,
+          image,
+          current_price,
+          symbol,
+        }))}
+      />
+      <Link href={"/login"}>
+        <BaseButton className="w-full mt-7 px-5 py-4 bg-blue-500 text-white text-base font-medium">
+          Invest Now
+        </BaseButton>
+      </Link>
+    </div>
+  );
+};

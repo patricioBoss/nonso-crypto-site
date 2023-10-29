@@ -2,12 +2,12 @@ import Image from "next/image";
 import React from "react";
 import { Card, CardContent, styled, Typography, useTheme } from "@mui/material";
 import numeral from "numeral";
-import stocks from "../helpers/stocks";
 import Iconify from "./Iconify";
 import ReactApexChart, { BaseOptionChart } from "./chart";
 import { merge } from "lodash";
 import { fCurrency, fPercent } from "../utils/formatNumber";
 import Link from "next/link";
+import cryptoList from "../helpers/crypto";
 
 // ----------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ const StocksCard = ({ stockData, chartData }) => {
   // console.log(stockData);
   console.log("chartdata", chartData);
   const chartOptions = merge(BaseOptionChart(), {
-    colors: [stocks[stockData.symbol].bg],
+    colors: [cryptoList[stockData.id].bg],
     chart: { sparkline: { enabled: true } },
     xaxis: { labels: { show: false } },
     yaxis: { labels: { show: false } },
@@ -48,7 +48,7 @@ const StocksCard = ({ stockData, chartData }) => {
     fill: { gradient: { opacityFrom: 0.56, opacityTo: 0.56 } },
   });
   return (
-    <Link href={"/dashboard/portfolio/" + stockData.symbol}>
+    <Link href={"/dashboard/invest/" + stockData.id}>
       <RootStyle>
         <CardContent
           sx={{
@@ -65,7 +65,7 @@ const StocksCard = ({ stockData, chartData }) => {
             <div className=" w-full h-full flex flex-col justify-between p-4">
               <div className=" flex justify-between mb-8">
                 <Image
-                  src={stocks[stockData.symbol].imgUrl}
+                  src={stockData.image}
                   className=" rounded-full"
                   width={70}
                   height={70}
@@ -73,7 +73,7 @@ const StocksCard = ({ stockData, chartData }) => {
                 />
                 <div
                   className={`border border-solid border-[#cdcdcd] rounded-full w-[60px] h-[60px] flex flex-col justify-center items-center ${
-                    stockData.regularMarketChangePercent >= 0
+                    stockData.price_change_percentage_24h >= 0
                       ? " text-green-500"
                       : "text-red-500"
                   } p-2`}
@@ -82,13 +82,13 @@ const StocksCard = ({ stockData, chartData }) => {
                     width={17}
                     height={17}
                     icon={
-                      stockData.regularMarketChangePercent >= 0
+                      stockData.price_change_percentage_24h >= 0
                         ? "eva:trending-up-fill"
                         : "eva:trending-down-fill"
                     }
                   />
                   <p className="text-sm">
-                    {fPercent(stockData.regularMarketChangePercent)}
+                    {fPercent(stockData.price_change_percentage_24h)}
                   </p>
                 </div>
                 {/* <divs
@@ -104,9 +104,9 @@ const StocksCard = ({ stockData, chartData }) => {
                     sx={{ lineHeight: 1, textAlign: "left", mb: 1 }}
                     variant="h5"
                   >
-                    {stockData.shortName}
+                    {stockData.name}
                   </Typography>
-                  <p className=" text-xs">{stockData.symbol} . NASDAQ</p>
+                  <p className=" text-xs">{stockData.symbol} . CRYPTO</p>
                 </div>
                 <div className=" flex flex-col items-start self-end">
                   <p className=" text-[10px] leading-[.5rem]">Current price</p>

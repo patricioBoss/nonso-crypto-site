@@ -14,33 +14,40 @@ import pageAuth from "../../../middleware/pageAuthAccess";
 import stocks from "../../../helpers/stocks";
 import axios from "axios";
 import StocksCard from "../../../components/stocksCard";
+import cryptoList from "../../../helpers/crypto";
 // ----------------------------------------------------------------------
 async function handler({ req }) {
   const user = serializeFields(req.user);
-  const stocksListString = Object.keys(stocks).join(",");
+  const stocksListString = Object.keys(cryptoList).join(",");
   // const stocksResponse = await axios.get(
   //   `https://query1.finance.yahoo.com/v6/finance/quote?symbols=${stocksListString}`
   // );
   // const stocksDataList = await stocksResponse.data.quoteResponse.result;
-  const stocksResponse = await axios({
-    baseURL: process.env.NEXT_PUBLIC_IMAGE_SERVER,
+  const { data: cryptoDataList } = await axios({
+    baseURL: "https://api.coingecko.com",
     method: "GET",
-    url: "/yahooapi/quotes",
+    url: "/api/v3/coins/markets",
+    params: {
+      vs_currency: "usd",
+      ids: stocksListString,
+    },
   });
-  const stocksDataList = await stocksResponse.data.data;
+  //   const stocksResponse = await axios({
+  //     baseURL: process.env.NEXT_PUBLIC_IMAGE_SERVER,
+  //     method: "GET",
+  //     url: "/yahooapi/quotes",
+  //   });
+  //   const stocksDataList = await stocksResponse.data.data;
 
-  const stockListArray = Object.keys(stocks).map((symbol) =>
+  console.log(cryptoDataList.map(({ symbol }) => symbol));
+  const stockListArray = cryptoDataList.map(({ symbol }) =>
     axios.get(
-      `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?metrics=high&interval=30m&range=1d`
+      `https://query1.finance.yahoo.com/v8/finance/chart/${symbol.toUpperCase()}-USD?metrics=high&interval=30m&range=1d`
     )
   );
   const stockQuoteList = await Promise.all(stockListArray);
 
-  let stockDataQuote = stocksDataList.map((stock, idx) => {
-    console.log(
-      stock.symbol,
-      JSON.stringify(stockQuoteList[idx].data, null, 2)
-    );
+  let stockDataQuote = cryptoDataList.map((stock, idx) => {
     return {
       data: { ...stock, ...stockQuoteList[idx].data.chart.result[0].meta },
       quote: stockQuoteList[idx].data.chart.result[0].indicators.quote[0],
@@ -80,7 +87,7 @@ export default function Plans({ user, stockDataQuote }) {
   return (
     <Page title="All Plans">
       <Container maxWidth={themeStretch ? false : "xl"}>
-        <Typography variant="h4">Explore Trending Markets</Typography>
+        <Typography variant="h4">Explore Trending Cryptocurrencies</Typography>
         <Grid mt={1} container spacing={3}>
           {stockDataQuote.map((stock) => (
             <Grid key={stock.data.symbol} item xs={12} sm={6} md={4}>

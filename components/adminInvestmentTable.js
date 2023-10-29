@@ -259,7 +259,7 @@ function AddActive({ investment, handlePause }) {
   );
 }
 
-function MoreMenuButton({ row, handleActive, handleDeleteModal }) {
+function MoreMenuButton({ row, handleDeleteModal }) {
   const [open, setOpen] = useState(null);
   const [isloading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -328,16 +328,7 @@ function MoreMenuButton({ row, handleActive, handleDeleteModal }) {
         }}
       >
         <MenuItem>
-          {row.status === "pending" ? (
-            <LoadingButton
-              onClick={() => handleActive(row)}
-              loading={row.loading}
-              variant="contained"
-              color="success"
-            >
-              <span>Approve investment</span>
-            </LoadingButton>
-          ) : row.status === "active" ? (
+          {row.status === "active" ? (
             <LoadingButton
               onClick={() => handlePauseInvestment(row, "paused")}
               loading={isloading}
@@ -352,10 +343,15 @@ function MoreMenuButton({ row, handleActive, handleDeleteModal }) {
               <span>Resume Investment</span>
             </LoadingButton>
           ) : (
-            <AddActive investment={row} />
+            <> </>
           )}
         </MenuItem>
         <Divider sx={{ borderStyle: "dashed" }} />
+        {row.status === "active" && (
+          <MenuItem sx={{ color: "error.main" }} onClick={handleDeleteModal}>
+            <AddActive investment={row} />
+          </MenuItem>
+        )}
 
         <MenuItem sx={{ color: "error.main" }} onClick={handleDeleteModal}>
           <TrashIcon className=" mr-2 w-[20px] h-[20px]" />

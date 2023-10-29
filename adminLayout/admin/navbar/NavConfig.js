@@ -3,6 +3,7 @@ import SvgIconStyle from "../../../components/SvgIconStyle";
 import { FiHome } from "react-icons/fi";
 import { GiWallet } from "react-icons/gi";
 import { AiFillSetting } from "react-icons/ai";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { BsCreditCard2Back } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 // ----------------------------------------------------------------------
@@ -17,6 +18,7 @@ const ICONS = {
   dashboard: <FiHome />,
   wallet: <GiWallet />,
   settings: <AiFillSetting />,
+  deposit: <RiMoneyDollarCircleLine />,
   withdrawal: <BsCreditCard2Back />,
   mail: <HiMail />,
 };

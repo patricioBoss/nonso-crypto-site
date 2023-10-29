@@ -24,7 +24,7 @@ const StocksCarousel = ({ stocks }) => {
       >
         {stocks.map((stock) => (
           <SwiperSlide
-            className="bg-[#154C8A] rounded-[1rem] overflow-hidden"
+            className="bg-[#1850cc] rounded-[1rem] overflow-hidden"
             key={stock.symbol}
           >
             <StockSliderCards stockData={stock} />

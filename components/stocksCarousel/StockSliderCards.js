@@ -2,21 +2,23 @@ import Image from "next/image";
 import React from "react";
 import { Typography } from "@mui/material";
 import numeral from "numeral";
-import stocks from "../../helpers/stocks";
 import Iconify from "../Iconify";
 
 const StockSliderCards = ({ stockData }) => {
-  // console.log(stockData);
+  console.log(stockData);
   return (
     <div className=" w-full h-full rounded-[2rem] p-4 flex flex-col justify-between">
       <div className=" flex justify-between mb-8">
-        <Image
-          src={stocks[stockData.symbol].imgUrl}
-          className=" rounded-full"
-          width={70}
-          height={70}
-          alt="google"
-        />
+        <div className=" w-fit rounded-full bg-white">
+          <Image
+            src={stockData.image}
+            className=" rounded-full"
+            width={70}
+            height={70}
+            alt="google"
+          />
+        </div>
+
         <div className=" bg-white rounded-full w-[50px] h-[50px] flex justify-center items-center p-2">
           <div
             className={`${
@@ -43,9 +45,11 @@ const StockSliderCards = ({ stockData }) => {
             sx={{ color: "white", lineHeight: 1, textAlign: "left", mb: 1 }}
             variant="h5"
           >
-            {stockData.shortName}
+            {stockData.name}
           </Typography>
-          <p className=" text-xs text-gray-300">{stockData.symbol} . NASDAQ</p>
+          <p className=" text-xs text-gray-300">
+            {stockData.symbol.toUpperCase()} . {stockData.instrumentType}
+          </p>
         </div>
         <div className=" flex flex-col items-start self-end">
           <p className=" text-[10px] leading-[.5rem] text-gray-300">

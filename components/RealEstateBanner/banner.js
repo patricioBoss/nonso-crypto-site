@@ -16,20 +16,25 @@ const Banner = ({ reel }) => {
             <Typography
               className="text-sm md:text-xl"
               component={"h5"}
-              sx={{ lineHeight: 1, textAlign: "left", mb: 1 }}
+              sx={{
+                lineHeight: 1,
+                color: reel.color,
+                textAlign: "left",
+                mb: 1,
+              }}
               variant="h3"
             >
               {reel.title}
             </Typography>
             <Typography
               className="text-xs md:text-base"
-              sx={{ textAlign: "left", mb: 1 }}
+              sx={{ textAlign: "left", color: reel.color, mb: 1 }}
               variant="body1"
             >
               {reel.paragraph}
             </Typography>
-            <Link href={"/dashboard/realestate"}>
-              <Button variant="contained" color="error">
+            <Link href={"/dashboard/invest"}>
+              <Button variant="contained" color={reel.button}>
                 Invest Now
               </Button>
             </Link>

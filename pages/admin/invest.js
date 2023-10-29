@@ -2,7 +2,6 @@ import { Container, Pagination } from "@mui/material";
 // layouts
 import Layout from "../../adminLayout/admin/adminLayout";
 // hooks
-import { useTheme } from "@mui/material/styles";
 import serializeFields from "../../helpers/serialize";
 import useSettings from "../../hooks/useSettings";
 // components
@@ -11,7 +10,6 @@ import Page from "../../components/Page";
 import PropTypes from "prop-types";
 import Investment from "../../models/investment.model";
 import AdminInvestmentListtable from "../../components/adminInvestmentTable";
-import dbConnect from "../../utils/dbConnect";
 import adminPageAuth from "../../middleware/adminPageAuth";
 import { useRouter } from "next/router";
 
@@ -34,7 +32,9 @@ const handler = async (ctx) => {
       .populate({ path: "userId", select: "email _id" })
       .lean(true)
   );
-  const investmentCount = await Investment.find({}).count();
+  const investmentCount = await Investment.find({
+    status: { $ne: "ended" },
+  }).count();
   console.log("this is all investments", { investmentCount, page });
   return {
     props: {

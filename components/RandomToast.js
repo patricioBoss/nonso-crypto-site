@@ -12,7 +12,7 @@ function randomIntFromInterval(min, max) {
 const customToast = (name, state, amount) => (t) =>
   (
     <div
-      className={`bg-[#3182c1] text-white flex rounded-[10px] w-4/5 sm:w-[435px] pt-[10px] md:pt-[20px] pb-[17px] md:pb-[27px] pr-[42px] md:pr-[64px] ${
+      className={`bg-dark-footer text-white flex rounded-[10px] w-4/5 sm:w-[435px] pt-[10px] md:pt-[20px] pb-[17px] md:pb-[27px] pr-[42px] md:pr-[64px] ${
         t.visible ? " animate-slide-in-bottom" : " animate-fade-out-bottom"
       }`}
     >

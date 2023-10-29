@@ -14,6 +14,8 @@ import { FaChevronLeft } from "react-icons/fa";
 import { capitalCase } from "change-case";
 import numeral from "numeral";
 import stocks from "../helpers/stocks";
+import cryptoList from "../helpers/crypto";
+import { LoadingButton } from "@mui/lab";
 
 // ----------------------------------------------------------------------
 
@@ -30,29 +32,27 @@ StockPlanCards.propTypes = {
   plan: PropTypes.object,
   stockData: PropTypes.object,
   setDetails: PropTypes.func,
-  handleOpen: PropTypes.func,
+  isSubmitting: PropTypes.bool,
+  handleInvest: PropTypes.func,
 };
 function StockPlanCards({
   plan: { minimum, maximum, name, id, interest },
   stockData,
   setDetails,
-  handleOpen,
+  isSubmitting,
+  handleInvest,
 }) {
   const [open, setOpen] = useState(false);
   const [amount, setAmount] = useState("");
   const handleToggle = () => setOpen((x) => !x);
   const handleAmtChange = (e) => {
     const { value } = e.target;
-    setAmount(value);
-  };
-  const handleInvest = () => {
-    setDetails({
-      capital: amount,
-      currency: "usdt",
-      stock: stockData.symbol,
+    setDetails((x) => ({
+      capital: value,
+      stock: stockData.id,
       planId: id,
-    });
-    handleOpen();
+    }));
+    setAmount(value);
   };
   return (
     <RootStyle>
@@ -76,13 +76,13 @@ function StockPlanCards({
                 width: 38,
                 height: 38,
               }}
-              src={stocks[stockData.symbol].imgUrl}
+              src={stockData.image}
               className=" rounded-full"
               alt="stock icon"
             />
           </Box>
           <Typography paddingLeft={2} align={"center"} variant="h6">
-            {`${stockData.longName} (USD)(1D)`}
+            {`${stockData.name} (USD)(1D)`}
           </Typography>
         </Box>
         <Box>
@@ -164,19 +164,20 @@ function StockPlanCards({
                   shrink: true,
                 }}
               />
-              <Button
+              <LoadingButton
                 fullWidth
                 size="medium"
                 sx={{ mt: 3 }}
                 type="button"
                 variant="contained"
                 onClick={handleInvest}
+                loading={isSubmitting}
                 disabled={
                   !(parseInt(amount) >= minimum && parseInt(amount) <= maximum)
                 }
               >
                 Proceed
-              </Button>
+              </LoadingButton>
             </>
           )}
         </Box>

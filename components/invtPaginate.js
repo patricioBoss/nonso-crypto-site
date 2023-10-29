@@ -220,12 +220,12 @@ export default function EnhancedTable({ rows, handleConfirmShow }) {
                             width: 38,
                             height: 38,
                           }}
-                          src={stocks[row.stock.symbol].imgUrl}
+                          src={row.stock.image}
                           className=" rounded-full"
                           alt="stock icon"
                         />
                         {row.type.includes("stock")
-                          ? row.stock.longName
+                          ? row.stock.name
                           : "Real EState"}
                       </Typography>{" "}
                     </TableCell>
