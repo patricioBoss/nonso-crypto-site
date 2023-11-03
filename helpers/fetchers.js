@@ -19,7 +19,7 @@ export const getCoinPrices = async () => {
     url: "/api/v3/coins/markets",
     params: {
       vs_currency: "usd",
-      ids: "bitcoin,tether,ethereum",
+      ids: "bitcoin,tether,ethereum,cardano,ripple",
     },
   });
 

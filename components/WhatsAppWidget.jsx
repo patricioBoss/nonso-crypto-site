@@ -5,9 +5,9 @@ const WhatsAppWidget = () => {
   const [open, setOpen] = useState(false);
   return (
     <FloatingWhatsApp
-      accountName="Elizabeth Graney"
-      avatar="/img/elizabeth reed avatar.jpg"
-      buttonClassName="left-[2rem] "
+      accountName="FidelityCryptoPro"
+      avatar="/img/fidelitycrypto-logo.png"
+      buttonClassName="left-[2rem]"
       onClose={() => setOpen(false)}
       onClick={() => setOpen(true)}
       phoneNumber="15623965148"
