@@ -344,7 +344,7 @@ export function PhoneChatSection() {
               Who We Are
             </h1>
             <p className="mt-6 text-lg text-gray-600">
-              FidelityCryptoPro, as an investment company, is committed to
+              WisevestCapital, as an investment company, is committed to
               redefining the landscape of digital investments. At the core of
               our vision is the integration of cutting-edge technology,
               particularly AI, to optimize investment strategies and deliver

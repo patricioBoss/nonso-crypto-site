@@ -5,13 +5,13 @@ const WhatsAppWidget = () => {
   const [open, setOpen] = useState(false);
   return (
     <FloatingWhatsApp
-      accountName="FidelityCryptoPro"
-      avatar="/img/fidelitycrypto-logo.png"
+      accountName="WisevestCapital"
+      avatar="/img/wisevestcapital-logo.jpg"
       buttonClassName="left-[2rem]"
       onClose={() => setOpen(false)}
       onClick={() => setOpen(true)}
       phoneNumber="15623965148"
-      chatboxClassName={`left-[2rem]  ${
+      chatboxClassName={`left-[2rem] ${
         open ? "animate-bounce-in" : " animate-bounce-out"
       }`}
     />

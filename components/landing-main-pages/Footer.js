@@ -18,7 +18,7 @@ const Footer = () => {
                     />
                   </a>
                   <p className="mt-2 mb-3 text-gray-300">
-                    FidelityCryptoPro assists individuals in achieving financial
+                    WisevestCapital assists individuals in achieving financial
                     success by leveraging the power of AI-driven cryptocurrency
                     mining. Through our innovative approach, we optimize mining
                     operations, enhancing efficiency and profitability for our

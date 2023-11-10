@@ -4,10 +4,10 @@ const sampleMailTemplate = (name = "", loginLink, message) => `
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8" />
-        <title>Message From Elizabeth Graney Wealth Management</title>
+        <title>Message From WisevestCapital -AI mining</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta content="Elizabeth Graney Wealth Management" name="description" />
-        <meta name="author" content="Message, Elizabeth Graney Wealth Management" />
+        <meta content="WisevestCapital -AI mining" name="description" />
+        <meta name="author" content="Message, WisevestCapital -AI mining" />
         <meta name="version" content="1.0.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
@@ -21,8 +21,8 @@ const sampleMailTemplate = (name = "", loginLink, message) => `
         <div style="margin-top: 50px;">
             <table cellpadding="0" cellspacing="0" style="font-family: Nunito, sans-serif; font-size: 15px; font-weight: 400; width: 600px; border: none; margin: 0 auto; overflow: hidden; background-color: #fff; box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);">
                 <thead>
-                    <tr style="background-color: #14609a; padding: 3px 0; border: none; line-height: 68px; text-align: center; color: #fff; font-size: 24px; letter-spacing: 1px;">
-                        <th scope="col"><img style="width: 300px; margin-top: 50px;" src="https://pipsville-bucket.s3.us-west-004.backblazeb2.com/elizabeth+graney.png" alt=""></th>
+                    <tr style="background-color: #1381d7; padding: 3px 0; border: none; line-height: 68px; text-align: center; color: #fff; font-size: 24px; letter-spacing: 1px;">
+                        <th scope="col"><img style="width: 200px; margin-top: 50px;" src="https://pipsville-bucket.s3.us-west-004.backblazeb2.com/wisevest-logo-white.png" alt=""></th>
                     </tr>
                 </thead>
     
@@ -45,13 +45,13 @@ const sampleMailTemplate = (name = "", loginLink, message) => `
                     </tr>
                     <tr>
                         <td style="padding: 15px 24px 15px; color: #676d74;">
-                            Elizabeth Graney Wealth Management <br> Support Team
+                            WisevestCapital -AI mining <br> Support Team
                         </td>
                     </tr>
     
                     <tr>
                         <td style="padding: 16px 8px; color: #676d74; background-color: #f8f9fc; text-align: center;">
-                            © <script>document.write(new Date().getFullYear())</script> Elizabeth Graney Wealth Management.
+                            © <script>document.write(new Date().getFullYear())</script> WisevestCapital -AI mining.
                         </td>
                     </tr>
                 </tbody>

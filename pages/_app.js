@@ -60,13 +60,13 @@ export default function MyApp(props) {
   return (
     <>
       <DefaultSeo
-        title="FidelityCryptoPro - AI Crypto Mining for Optimal Profits"
-        description="Experience AI-powered cryptocurrency mining with FidelityCryptoPro. Maximize profitability and efficiency. Join us today!"
+        title="WisevestCapital - AI Crypto Mining for Optimal Profits"
+        description="Experience AI-powered cryptocurrency mining with WisevestCapital. Maximize profitability and efficiency. Join us today!"
         openGraph={{
           type: "website",
           locale: "en-GB",
           url: "https://advisor.elizabethanngraney.com",
-          siteName: "FidelityCryptoPro AI mining",
+          siteName: "WisevestCapital AI mining",
           profile: {
             firstName: "Elizabeth Ann Graney",
             lastName: "Graney",

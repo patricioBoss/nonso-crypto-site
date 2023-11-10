@@ -110,9 +110,9 @@ const DepositWithdrawal = ({ marketData }) => {
             Top Deposits and Payouts.
           </h2>
           <p className="text-lg text-blue-200 mt-4 mb-8 text-center max-w-768">
-            Discover seamless financial transactions with
-            FidelityCryptoPro&apos;s Top Deposits and Withdrawals. Take control
-            of your investments and earnings effortlessly.
+            Discover seamless financial transactions with WisevestCapital&apos;s
+            Top Deposits and Withdrawals. Take control of your investments and
+            earnings effortlessly.
           </p>
         </div>
         <div className=" border-2 max-w-768 border-white rounded-full p-1 flex justify-between mx-auto">

@@ -6,20 +6,20 @@ import { Accordion, Default } from "../helpers/Accordion";
 let AllData = {
   general: [
     {
-      title: "About  FidelityCryptoPro",
+      title: "About  WisevestCapital",
       content:
-        "FidelityCryptoPro is a cutting-edge cryptocurrency mining company leveraging AI to optimize mining operations, enhance efficiency, and amplify profitability for miners. Their innovative approach merges artificial intelligence with blockchain technology, positioning them at the forefront of the crypto mining industry.",
+        "WisevestCapital is a cutting-edge cryptocurrency mining company leveraging AI to optimize mining operations, enhance efficiency, and amplify profitability for miners. Their innovative approach merges artificial intelligence with blockchain technology, positioning them at the forefront of the crypto mining industry.",
     },
     {
       title: "Our Platform",
       content:
-        " FidelityCryptoPro's platform enables users to invest in real-time across a vast selection of over 250 cryptocurrencies listed on their local exchanges, complemented by a diverse array of cryptocurrency investment opportunities. FidelityCryptoPro streamlines funding, ensuring a straightforward and effortless process, allowing users to initiate their cryptocurrency mining journey with just a few clicks.",
+        " WisevestCapital's platform enables users to invest in real-time across a vast selection of over 250 cryptocurrencies listed on their local exchanges, complemented by a diverse array of cryptocurrency investment opportunities. WisevestCapital streamlines funding, ensuring a straightforward and effortless process, allowing users to initiate their cryptocurrency mining journey with just a few clicks.",
     },
     {
-      title: "How to Register on FidelityCryptoPro",
+      title: "How to Register on WisevestCapital",
       content: `
-    How to sign up on FidelityCryptoPro
-Sure, here's a simple step-by-step guide on how to sign up on FidelityCryptoPro:
+    How to sign up on WisevestCapital
+Sure, here's a simple step-by-step guide on how to sign up on WisevestCapital:
 <br>
 1. Open your preferred web browser and navigate to the stock investment web app's website.<br>
 2. Look for the "Sign Up" or "Register" button and click on it to start the registration process.<br>
@@ -33,8 +33,8 @@ Sure, here's a simple step-by-step guide on how to sign up on FidelityCryptoPro:
   ],
   invest: [
     {
-      title: "Can I own multiple Investment asset on FidelityCryptoPro?",
-      content: `Additionally, owning multiple investment assets on FidelityCryptoPro can help diversify your investment portfolio. Diversification is a key investment strategy that helps reduce risk by spreading your investments across different asset classes. By owning multiple investment assets on FidelityCryptoPro, you can minimize the impact of market fluctuations on your portfolio and potentially increase your returns over time.`,
+      title: "Can I own multiple Investment asset on WisevestCapital?",
+      content: `Additionally, owning multiple investment assets on WisevestCapital can help diversify your investment portfolio. Diversification is a key investment strategy that helps reduce risk by spreading your investments across different asset classes. By owning multiple investment assets on WisevestCapital, you can minimize the impact of market fluctuations on your portfolio and potentially increase your returns over time.`,
     },
     {
       title: "Our Investment Cycle",

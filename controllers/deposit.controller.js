@@ -108,7 +108,6 @@ export const attachDeposit = async (req, res, next) => {
 export const deleteDeposit = async (req, res) => {
   try {
     const depositId = req.deposit._id;
-    console.log(req.investment);
     let deposit = await Deposit.findByIdAndDelete(depositId);
     return response(res, 200, "deleted successfully", deposit);
   } catch (err) {

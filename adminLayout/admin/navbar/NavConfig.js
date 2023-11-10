@@ -35,6 +35,7 @@ const sidebarConfig = [
         path: "/admin/withdrawal",
         icon: ICONS.withdrawal,
       },
+      { title: "Deposit", path: "/admin/deposit", icon: ICONS.deposit },
       { title: "Mail", path: "/admin/mail", icon: ICONS.mail },
     ],
   },

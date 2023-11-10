@@ -69,7 +69,7 @@ export default function InvestmentTable({ rows }) {
       })
     );
     axios
-      .post(`/api/user/${userId._id}/deposit/${_id}/approve`)
+      .post(`/api/user/${userId._id}/deposit/${_id}`)
       .then((res) => {
         setInvList((x) =>
           x.map((x) => {

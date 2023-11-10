@@ -26,7 +26,7 @@ const LandingAbout = () => {
               </h3>
 
               <p className="text-slate-400 max-w-2xl mx-auto">
-                FidelityCryptoPro, as an investment company, is committed to
+                WisevestCapital, as an investment company, is committed to
                 redefining the landscape of digital investments. At the core of
                 our vision is the integration of cutting-edge technology,
                 particularly AI, to optimize investment strategies and deliver
@@ -37,7 +37,7 @@ const LandingAbout = () => {
                 transparency, data-driven insights, and tailored investment
                 solutions, ensuring that our clients&apos; financial goals are
                 met while navigating the ever-evolving cryptocurrency markets.
-                Join FidelityCryptoPro in embracing a future where innovative
+                Join WisevestCapital in embracing a future where innovative
                 investment strategies pave the way for financial growth and
                 prosperity.
               </p>

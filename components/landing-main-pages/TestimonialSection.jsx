@@ -6,63 +6,63 @@ const reviews = [
   {
     title: "It is a Game-changer.",
     img: "/img/Miko.png",
-    body: '"FidelityCryptoPro has been a game-changer for my crypto mining endeavors. Their AI-powered approach significantly boosted my mining efficiency, resulting in higher returns."',
+    body: '"WisevestCapital has been a game-changer for my crypto mining endeavors. Their AI-powered approach significantly boosted my mining efficiency, resulting in higher returns."',
     author: "CrazyInvestor",
     rating: 4,
   },
   {
     title: "Outsanding",
     img: "/img/Ashley Rodriguez.jpg",
-    body: "FidelityCryptoPro made crypto mining easy for someone like me, who was new to the concept. The user-friendly interface and guidance on suitable investment plans gave me the confidence to start.",
+    body: "WisevestCapital made crypto mining easy for someone like me, who was new to the concept. The user-friendly interface and guidance on suitable investment plans gave me the confidence to start.",
     author: "Ashley R",
     rating: 4,
   },
   {
     title: "Exceeded my expectations",
     img: "/img/client/02.jpg",
-    body: "FidelityCryptoPro is a pioneer in merging AI with crypto mining. The efficiency gains and steady ROI have exceeded my expectations. ",
+    body: "WisevestCapital is a pioneer in merging AI with crypto mining. The efficiency gains and steady ROI have exceeded my expectations. ",
     author: "Ruki M",
     rating: 5,
   },
   {
     title: "Wish I could give 6 stars",
     img: "/img/rose.png",
-    body: "I love that FidelityCryptoPro makes it easy to monitor my investments in real-time. The website is always updating with the latest market information, which helps me make informed investment decisions.",
+    body: "I love that WisevestCapital makes it easy to monitor my investments in real-time. The website is always updating with the latest market information, which helps me make informed investment decisions.",
     author: "Rose k",
     rating: 5,
   },
   {
     title: "Excellent Support",
     img: "/img/Markus Wagner.jpg",
-    body: "FidelityCryptoPro's team is responsive, professional, and committed to helping me achieve my investment goals",
+    body: "WisevestCapital's team is responsive, professional, and committed to helping me achieve my investment goals",
     author: "Markus Wagner",
     rating: 3,
   },
   {
     title: "No more debt!",
     img: "/img/caroline.png",
-    body: "I appreciate FidelityCryptoPro's transparency and dedication to helping me achieve my real estate investment goals.",
+    body: "I appreciate WisevestCapital's transparency and dedication to helping me achieve my real estate investment goals.",
     author: "Caroline M",
     rating: 4,
   },
   {
     title: "I’m 13 and I’m rich.",
     img: "/img/client/03.jpg",
-    body: "Managing investments can be overwhelming, but FidelityCryptoPro simplified the process for me. Their intuitive platform and daily ROI updates provide peace of mind, allowing me to focus on my career while growing my investments",
+    body: "Managing investments can be overwhelming, but WisevestCapital simplified the process for me. Their intuitive platform and daily ROI updates provide peace of mind, allowing me to focus on my career while growing my investments",
     author: "Micheal Lin",
     rating: 5,
   },
   {
     title: "Inbuilt Porfolio Managment",
     img: "/img/joe.png",
-    body: "I love how FidelityCryptoPro allows me to diversify my portfolio with a variety of investment options. It's great to have everything in one place",
+    body: "I love how WisevestCapital allows me to diversify my portfolio with a variety of investment options. It's great to have everything in one place",
     author: "Joe Mc",
     rating: 5,
   },
   {
     title: "Safe and Secure",
     img: "/img/client/01.jpg",
-    body: "FidelityCryptoPro has exceeded my expectations with its range of investment options and user-friendly interface. It's the perfect platform for anyone interested in investing.",
+    body: "WisevestCapital has exceeded my expectations with its range of investment options and user-friendly interface. It's the perfect platform for anyone interested in investing.",
     author: "Miko Banks",
     rating: 4,
   },
@@ -107,7 +107,7 @@ const TestimonialSection = () => {
         </h3>
 
         <p className="text-slate-400 max-w-xl mx-auto">
-          Celebrate success with FidelityCryptoPro through the voices of our
+          Celebrate success with WisevestCapital through the voices of our
           satisfied users, as they share their remarkable experiences and
           achievements.
         </p>
