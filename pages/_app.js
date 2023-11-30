@@ -65,16 +65,11 @@ export default function MyApp(props) {
         openGraph={{
           type: "website",
           locale: "en-GB",
-          url: "https://advisor.elizabethanngraney.com",
+          url: "https://wisevestcapital.com",
           siteName: "WisevestCapital AI mining",
-          profile: {
-            firstName: "Elizabeth Ann Graney",
-            lastName: "Graney",
-            gender: "female",
-          },
           images: [
             {
-              url: "https://f004.backblazeb2.com/file/pipsville-bucket/666x1122.2png.png",
+              url: "/img/wisevestcapital-logo.jpg",
               alt: "Og Image Alt",
             },
           ],
@@ -83,7 +78,7 @@ export default function MyApp(props) {
           {
             name: "keywords",
             content:
-              "elizabeth, Ann, graney, Elizabeth Reed, Elizabeth Ann Graney, Washington, DC, Wealth Management, Wealth Management, Financial goals, Retirement, Investing, Family planning, Business planning, Philanthropy, Financial wellness",
+              "AI crypto mining, Cryptocurrency investment, Blockchain technology, AI-driven mining, Cryptocurrency mining solutions, Mining profitability, Secure crypto mining, WisevestCapital, AI mining technology, Financial growth in cryptocurrency, Crypto investment platform, Secure blockchain investments, Certified crypto mining, AI-powered investment.",
           },
           // {
           //   name: "google-site-verification",
@@ -104,19 +99,19 @@ export default function MyApp(props) {
       />
 
       <LocalBusinessJsonLd
-        type="Wealth Management"
-        id="https://advisor.elizabethanngraney.com"
-        name="Elizabeth Ann Graney - Wealth Management"
-        description="Elizabeth Ann Graney can help you achieve your financial goals. Learn about Retirement, Investing, Family, Business Planning, Philanthropy, and Financial Wellness."
+        type="website"
+        id="https://wisevestcapital.com"
+        name="WisevestCapital - AI Crypto Mining for Optimal Profits"
+        description="Experience AI-powered cryptocurrency mining with WisevestCapital. Maximize profitability and efficiency. Join us today!"
         url=""
-        telephone="+14242793916"
-        address={{
-          streetAddress: "725 15th Street Northwest Washington DC 20005",
-          addressLocality: "15th Street Northwest Washington",
-          addressRegion: " DC",
-          postalCode: "34688",
-          addressCountry: "US",
-        }}
+        // telephone="+14242793916"
+        // address={{
+        //   streetAddress: "725 15th Street Northwest Washington DC 20005",
+        //   addressLocality: "15th Street Northwest Washington",
+        //   addressRegion: " DC",
+        //   postalCode: "34688",
+        //   addressCountry: "US",
+        // }}
         geo={{
           latitude: "39.1962786",
           longitude: "-77.1762385",
