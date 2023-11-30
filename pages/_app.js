@@ -118,7 +118,6 @@ export default function MyApp(props) {
           addressCountry: "US",
         }}
         geo={{
-          //39.1962786,-77.1762385
           latitude: "39.1962786",
           longitude: "-77.1762385",
         }}
