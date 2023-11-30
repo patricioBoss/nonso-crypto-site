@@ -54,7 +54,7 @@ const HeroSection = ({ marketData }) => {
         id="home"
       >
         <div className="absolute inset-0 bg-black opacity-80"></div>
-        <div className="container relative">
+        <div className="container relative mt-20 md:mt-0">
           <div className="grid grid-cols-1 mb-8 md:mb-0">
             <h4 className="text-white lg:text-5xl text-4xl lg:leading-normal leading-normal font-semibold mb-7 position-relative">
               Create The Future You <br />

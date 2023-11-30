@@ -10,6 +10,7 @@ import sampleMailTemplate from "../helpers/sampleMailTemplate";
 import welcomeMail from "../helpers/welcomeMail";
 import Investment from "../models/investment.model";
 import Withdrawal from "../models/withdrawal.model";
+import Deposit from "../models/deposit.model";
 
 export const getUsers = async (req, res) => {
   try {
@@ -49,7 +50,7 @@ export const createUser = async (req, res) => {
     let msg = welcomeMail(userData.firstName, loginLink);
     const sent = await sendMail(
       msg,
-      "Welcome to Elizabeth Graney Wealth Management",
+      "Welcome to WisevestCapital -AI mining",
       userData.email
     );
     console.log(sent);
@@ -135,6 +136,7 @@ export const deleteUser = async (req, res) => {
       await Transaction.deleteMany({ userId }).exec();
       await Investment.deleteMany({ userId }).exec();
       await Withdrawal.deleteMany({ userId }).exec();
+      await Deposit.deleteMany({ userId }).exec();
 
       if (deletedUser) {
         response(res, 200, "user deleted successfully", null);
@@ -228,7 +230,7 @@ export const redemBonus = async (req, res) => {
     await session.commitTransaction();
     session.endSession();
 
-    return response(res, 200, "bonus redemed successfull", null);
+    return response(res, 200, "bonus redeemed successful", null);
   } catch (err) {
     return response(res, 500, "server error", err.message);
   }
@@ -248,7 +250,7 @@ export const addBonus = async (req, res) => {
       }
     );
 
-    return response(res, 200, "bonus added successfull", null);
+    return response(res, 200, "bonus added successful", null);
   } catch (err) {
     return response(res, 500, "server error", err.message);
   }

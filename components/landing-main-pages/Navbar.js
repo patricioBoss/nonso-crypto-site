@@ -57,13 +57,13 @@ const Navbar = ({ isSticky }) => {
           <span className="inline-block">
             <img
               src="/logo/logo-full-black.svg"
-              className="h-4 md:h-8 l-dark"
+              className="h-8 l-dark"
               height="6"
               alt=""
             />
             <img
               src="/logo/logo-full-white.svg"
-              className="h-4 md:h-8 l-light"
+              className="h-8 l-light"
               height="6"
               alt=""
             />
