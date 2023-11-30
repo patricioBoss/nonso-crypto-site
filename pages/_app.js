@@ -122,9 +122,7 @@ export default function MyApp(props) {
           latitude: "39.1962786",
           longitude: "-77.1762385",
         }}
-        images={[
-          "https://f004.backblazeb2.com/file/pipsville-bucket/666x1122.2png.png",
-        ]}
+        images={["/img/wisevestcapital-logo.jpg"]}
         openingHours={[
           {
             opens: "08:00",
