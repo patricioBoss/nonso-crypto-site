@@ -169,6 +169,7 @@ export default function MyApp(props) {
         </SettingsProvider>
       </CollapseDrawerProvider>
       <Script>{`feather.replace();`}</Script>
+      <Script src="//fw-cdn.com/11109193/3836827.js" chat="true" />
       {/* <Script
         src="//code.tidio.co/ryxghgdiucqlkgswdprdkwlolpygakwf.js"
         async
