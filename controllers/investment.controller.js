@@ -105,6 +105,9 @@ export const invest = async (req, res) => {
           req.profile._id,
           {
             level: invest.planId,
+            $inc: {
+              accountBalance: -Number(investment[0].capital),
+            },
           },
           {
             session,

@@ -16,6 +16,7 @@ import DepositWithdrawal from "../components/landing-main-pages/DepositWithdrawa
 import CertificateSection from "../components/landing-main-pages/CertificateSection.jsx";
 import TestimonialSection from "../components/landing-main-pages/TestimonialSection.jsx";
 import Script from "next/script.js";
+import cryptoList from "../helpers/crypto.js";
 
 const TickerTape = dynamic(
   () => import("react-ts-tradingview-widgets").then((w) => w.TickerTape),
@@ -124,15 +125,18 @@ Index.getLayout = function getLayout(page) {
 
 //https://bd-piano-live.mystagingwebsite.com/wp-json/wp/v2/posts?include=535495,535506,535510
 //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,tether,ethereum,bnb,ripple,cardano,usd-coin,binancecoin,dogecoin,matic-network,tron,solana
+const stocksListString = Object.keys(cryptoList).join(",");
 export const getStaticProps = async () => {
   try {
-    const { data } = await axios({
-      baseURL: "https://api.coingecko.com",
+    const {
+      data: { data },
+    } = await axios({
+      baseURL: "https://ethervest-image-server.cyclic.app",
       method: "GET",
-      url: "/api/v3/coins/markets",
+      url: "/coin/markets",
       params: {
         vs_currency: "usd",
-        ids: "bitcoin,tether,ethereum,bnb,ripple,cardano,usd-coin,binancecoin,dogecoin,matic-network,tron,solana",
+        ids: stocksListString,
       },
     });
 

@@ -99,7 +99,7 @@ const DeleteDepositModal = ({ open, setOpen, deposit }) => {
                     disabled={loading}
                     onClick={handleDelete}
                   >
-                    Deactivate
+                    delete
                   </LoadingButton>
                   <Button
                     type="button"

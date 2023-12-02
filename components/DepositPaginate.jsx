@@ -205,9 +205,7 @@ export default function EnhancedTable({ rows }) {
                         ? row.transactionId.slice(0, 12) + "..."
                         : row.transactionId}
                     </TableCell>
-                    <TableCell align="right">
-                      {fCurrency(row.capital)}
-                    </TableCell>
+                    <TableCell align="right">{fCurrency(row.amount)}</TableCell>
                     <TableCell
                       align="left"
                       sx={

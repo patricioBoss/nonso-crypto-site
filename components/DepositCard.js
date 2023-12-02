@@ -31,6 +31,8 @@ import Image from "next/image";
 import usdtImg from "../assets/img/usdt.jpg";
 import btcImg from "../assets/img/btc.jpg";
 import ethImg from "../assets/img/eth.jpg";
+import adaImg from "../assets/img/ada.jpg";
+import xrpImg from "../assets/img/xrp.jpg";
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Card)(() => ({
@@ -84,15 +86,15 @@ function DepositCard({ user, coin }) {
     }
     setIsSubmitting(true);
     axios
-      .post(`/api/user/${user._id}/deposit/`, { ...field, coin: coin.symbol })
+      .post(`/api/user/${user._id}/deposit/`, { ...field, coin: coin.id })
       .then(() => {
-        router.push("/dashboard");
+        router.push("/deposit/list");
         setIsSubmitting(false);
       })
       .catch((err) => {
         setIsSubmitting(false);
         if (err.response) {
-          toast.error("error, submitting transaction");
+          toast.error(err.response.data.message);
         } else {
           toast.error(err.message);
         }
@@ -153,6 +155,8 @@ function DepositCard({ user, coin }) {
             {coin.symbol === "btc" && <Image src={btcImg} alt="barcode" />}
             {coin.symbol === "usdt" && <Image src={usdtImg} alt="barcode" />}
             {coin.symbol === "eth" && <Image src={ethImg} alt="barcode" />}
+            {coin.symbol === "ada" && <Image src={adaImg} alt="barcode" />}
+            {coin.symbol === "xrp" && <Image src={xrpImg} alt="barcode" />}
           </Box>
           <Box>
             <>
@@ -176,6 +180,22 @@ function DepositCard({ user, coin }) {
               {coin.symbol === "eth" && (
                 <CopyClipboard
                   value={"0x7ac61Ed4A0C5422e8EfeA284375b5B8ec981B56A"}
+                  size="small"
+                  disabled
+                />
+              )}
+              {coin.symbol === "ada" && (
+                <CopyClipboard
+                  value={
+                    "addr1qyk9qnecf75mkh6cwtln2k7uvknlduqrv0gkwcdndfttrc6a89pggr53kwfna5p4vwcmjsq0zggy440ex7xqfa7he3vskxuxjl"
+                  }
+                  size="small"
+                  disabled
+                />
+              )}
+              {coin.symbol === "xrp" && (
+                <CopyClipboard
+                  value={"rU2ZKcchGYmVoCZEQqS5kjzCewrqzXH52w"}
                   size="small"
                   disabled
                 />

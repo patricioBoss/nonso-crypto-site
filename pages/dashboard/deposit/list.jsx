@@ -12,6 +12,7 @@ import serializeFields from "../../../helpers/serialize";
 import axios from "axios";
 // ----------------------------------------------------------------------
 import pageAuth from "../../../middleware/pageAuthAccess";
+import cryptoList from "../../../helpers/crypto";
 
 // ----------------------------------------------------------------------
 async function handler({ req }) {
@@ -23,14 +24,16 @@ async function handler({ req }) {
     }).lean()
   );
 
-  const uniqueStockString = [
-    ...new Set(allDeposits.map((x) => x.stock.toUpperCase())),
-  ].join(",");
-
-  const { data: cryptoDataList } = await axios({
-    baseURL: "https://api.coingecko.com",
+  // const uniqueStockString = [...new Set(allDeposits.map((x) => x.coin))].join(
+  //   ","
+  // );
+  const uniqueStockString = Object.keys(cryptoList).join(",");
+  const {
+    data: { data: cryptoDataList },
+  } = await axios({
+    baseURL: "https://ethervest-image-server.cyclic.app",
     method: "GET",
-    url: "/api/v3/coins/markets",
+    url: "/coin/markets",
     params: {
       vs_currency: "usd",
       ids: uniqueStockString,
@@ -42,9 +45,10 @@ async function handler({ req }) {
     acc[stock.id] = stock;
     return acc;
   }, {});
+  console.log({ uniqueStockString, cryptoDataList, stocksDataMap });
   const depositsWithStockData = allDeposits.map((x) => ({
     ...x,
-    stock: stocksDataMap[x.stock],
+    stock: stocksDataMap[x.coin],
   }));
 
   return {

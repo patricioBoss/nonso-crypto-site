@@ -23,10 +23,12 @@ async function handler({ req }) {
   //   `https://query1.finance.yahoo.com/v6/finance/quote?symbols=${stocksListString}`
   // );
   // const stocksDataList = await stocksResponse.data.quoteResponse.result;
-  const { data: cryptoDataList } = await axios({
-    baseURL: "https://api.coingecko.com",
+  const {
+    data: { data: cryptoDataList },
+  } = await axios({
+    baseURL: "https://ethervest-image-server.cyclic.app",
     method: "GET",
-    url: "/api/v3/coins/markets",
+    url: "/coin/markets",
     params: {
       vs_currency: "usd",
       ids: stocksListString,

@@ -58,12 +58,7 @@ async function handler({ req }) {
           $and: [
             { userId: req.user._id },
             {
-              $or: [
-                { type: "daily" },
-                { type: "bonus" },
-                { type: "referral" },
-                { type: "deposit" },
-              ],
+              $or: [{ type: "daily" }, { type: "bonus" }, { type: "referral" }],
             },
           ],
         },
@@ -85,19 +80,20 @@ async function handler({ req }) {
     const withdrawalList = serializeFields(
       await Withdrawal.find({ userId: user._id }).lean()
     );
-    console.log(totalEarnings, allApprovedInvestment, withdrawalList);
+    // console.log(totalEarnings, allApprovedInvestment, withdrawalList);
     const stocksListString = Object.keys(cryptoList).join(",");
-    const { data: cryptoDataList } = await axios({
-      baseURL: "https://api.coingecko.com",
+    const {
+      data: { data: cryptoDataList },
+    } = await axios({
+      baseURL: "https://ethervest-image-server.cyclic.app",
       method: "GET",
-      url: "/api/v3/coins/markets",
+      url: "/coin/markets",
       params: {
         vs_currency: "usd",
         ids: stocksListString,
       },
     });
 
-    console.log(cryptoDataList.map(({ symbol }) => symbol));
     const stockListArray = cryptoDataList.map(({ symbol }) =>
       axios.get(
         `https://query1.finance.yahoo.com/v8/finance/chart/${symbol.toUpperCase()}-USD?metrics=high&interval=30m&range=1d`

@@ -33,7 +33,7 @@ export default function CertificateSection() {
                   data-aos-anchor="[data-aos-id-2]"
                   data-aos-delay="200"
                 >
-                  At FidelityCrypto, we&apos;re proud to offer certified crypto
+                  At WisevestCapital, we&apos;re proud to offer certified crypto
                   mining solutions. Explore a platform that&apos;s certified for
                   security, precision, and success in AI mining
                 </p>

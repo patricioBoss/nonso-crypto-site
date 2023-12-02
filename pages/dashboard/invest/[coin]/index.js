@@ -46,9 +46,9 @@ async function handler(context) {
   }
 
   const { data: cryptoDataList } = await axios({
-    baseURL: "https://api.coingecko.com",
+    baseURL: "https://ethervest-image-server.cyclic.app",
     method: "GET",
-    url: "/api/v3/coins/markets",
+    url: "/coin/markets",
     params: {
       vs_currency: "usd",
       ids: coinSymbol,
@@ -151,7 +151,7 @@ const InvestList = ({ user, stockData }) => {
         ...payDetails,
       })
       .then((res) => {
-        router.push("/dashboard/invest/pend");
+        router.push("/dashboard/invest/all");
         setisSubmitting(false);
       })
       .catch((err) => {

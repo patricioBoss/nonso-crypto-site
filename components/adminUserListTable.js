@@ -420,7 +420,9 @@ function MoreMenuButton({ user, handleVerify, handleModal, handleDetails }) {
           },
         }}
       >
-        <MenuItem onClick={handleDetails}>View Details</MenuItem>
+        <MenuItem sx={{ color: "primary.main" }} onClick={handleDetails}>
+          View Details
+        </MenuItem>
         <MenuItem>
           {!user.isVerified ? (
             <LoadingButton

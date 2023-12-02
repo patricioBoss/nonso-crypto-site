@@ -18,6 +18,7 @@ import { LoadingButton } from "@mui/lab";
 import { fCurrency } from "../../../utils/formatNumber";
 import plans from "../../../helpers/plans";
 import { capitalCase } from "change-case";
+import cryptoList from "../../../helpers/crypto";
 // ----------------------------------------------------------------------
 async function handler({ req }) {
   const user = serializeFields(req.user);
@@ -28,20 +29,21 @@ async function handler({ req }) {
     }).lean()
   );
 
-  const uniqueStockString = [
-    ...new Set(allInvestments.map((x) => x.stock.toUpperCase())),
-  ].join(",");
-
-  const { data: cryptoDataList } = await axios({
-    baseURL: "https://api.coingecko.com",
+  // const uniqueStockString = [
+  //   ...new Set(allInvestments.map((x) => x.stock.toUpperCase())),
+  // ].join(",");
+  const uniqueStockString = Object.keys(cryptoList).join(",");
+  const {
+    data: { data: cryptoDataList },
+  } = await axios({
+    baseURL: "https://ethervest-image-server.cyclic.app",
     method: "GET",
-    url: "/api/v3/coins/markets",
+    url: "/coin/markets",
     params: {
       vs_currency: "usd",
       ids: uniqueStockString,
     },
   });
-
   // const stocksDataList = await stocksResponse.data.quoteResponse.result;
   const stocksDataMap = cryptoDataList.reduce((acc, stock) => {
     acc[stock.id] = stock;
@@ -51,7 +53,7 @@ async function handler({ req }) {
     ...x,
     stock: stocksDataMap[x.stock],
   }));
-
+  console.log({ cryptoDataList, stocksDataMap, investmentsWithStockData });
   return {
     props: {
       user,
@@ -143,16 +145,13 @@ export default function AllInvestments({ user, allInvestments }) {
   const RefetchData = async () => {
     try {
       let res = await axios.get(`/api/user/${user._id}/invest/all`);
-
-      const fetchedInvestments = res.data.data;
-      const uniqueStockString = [
-        ...new Set(fetchedInvestments.map((x) => x.stock.toUpperCase())),
-      ].join(",");
-
-      const { data: cryptoDataList } = await axios({
-        baseURL: "https://api.coingecko.com",
+      const uniqueStockString = Object.keys(cryptoList).join(",");
+      const {
+        data: { data: cryptoDataList },
+      } = await axios({
+        baseURL: "https://ethervest-image-server.cyclic.app",
         method: "GET",
-        url: "/api/v3/coins/markets",
+        url: "/coin/markets",
         params: {
           vs_currency: "usd",
           ids: uniqueStockString,

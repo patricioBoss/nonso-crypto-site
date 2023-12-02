@@ -13,10 +13,12 @@ export const getQuotes = async (quoteString) => {
 };
 
 export const getCoinPrices = async () => {
-  const { data: cryptoDataList } = await axios({
-    baseURL: "https://api.coingecko.com",
+  const {
+    data: { data: cryptoDataList },
+  } = await axios({
+    baseURL: "https://ethervest-image-server.cyclic.app",
     method: "GET",
-    url: "/api/v3/coins/markets",
+    url: "/coin/markets",
     params: {
       vs_currency: "usd",
       ids: "bitcoin,tether,ethereum,cardano,ripple",

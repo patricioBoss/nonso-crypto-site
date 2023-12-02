@@ -11,16 +11,16 @@ const reels = [
     imgUrl: "/img/real/banner/1.png",
     title: "Your Journey to Crypto Prosperity Begins Here",
     paragraph:
-      "FidelityCrypto takes you on an exciting journey into the world of AI-driven crypto mining. It's your chance to embark on a path of financial prosperity with cutting-edge technology by your side",
+      "WisevestCapital takes you on an exciting journey into the world of AI-driven crypto mining. It's your chance to embark on a path of financial prosperity with cutting-edge technology by your side",
   },
   {
     bg: "bg-[linear-gradient(180deg,#598EF3_0%,#ADE1FF_100%,#ADE1FF_100%)]",
     color: "#000000",
     button: "error",
     imgUrl: "/img/real/banner/2.png",
-    title: "FidelityCrypto AI: Where Innovation Meets Mining",
+    title: "WisevestCapital AI: Where Innovation Meets Mining",
     paragraph:
-      "Step into the future of mining with FidelityCrypto. We've brought innovation and AI together to create a platform that's setting new standards in the world of cryptocurrency",
+      "Step into the future of mining with WisevestCapital. We've brought innovation and AI together to create a platform that's setting new standards in the world of cryptocurrency",
   },
   {
     bg: "bg-[linear-gradient(180deg,#598EF3_0%,#000000_100%,#ADE1FF_100%)]",
@@ -28,7 +28,7 @@ const reels = [
     button: "warning",
     title: "AI-Powered Mining for Tomorrow's Investors",
     paragraph:
-      "FidelityCrypto is paving the way for tomorrow's investors. With AI-powered mining, we bring you a platform that's designed to deliver success in the world of cryptocurrency.",
+      "WisevestCapital is paving the way for tomorrow's investors. With AI-powered mining, we bring you a platform that's designed to deliver success in the world of cryptocurrency.",
 
     imgUrl: "/img/real/banner/3.png",
   },
