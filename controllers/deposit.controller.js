@@ -5,6 +5,7 @@ import sendMail from "../helpers/sendVerificationMail";
 import Deposit from "../models/deposit.model";
 import Transaction from "../models/transaction.model";
 import User from "../models/user.model";
+import { fCurrency } from "../utils/formatNumber";
 
 export const deposit = async (req, res) => {
   const profile = req.profile;
@@ -46,7 +47,11 @@ export const approveDeposit = async (req, res) => {
         { session, new: true }
       ).exec();
 
-      const message = `${profile.firstName}, your deposit of $${deposit.amount} has been approved and you can now invest up to $${profile.accountBalance} now.`;
+      const message = `${profile.firstName}, your deposit of $${
+        deposit.amount
+      } has been approved and you can now invest up to ${fCurrency(
+        profile.accountBalance + req.deposit.capital
+      )} now.`;
       let msg = sampleMailTemplate(profile.firstName, loginLink, message);
 
       await sendMail(msg, "Deposit Update", profile.email);
