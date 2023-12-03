@@ -19,6 +19,7 @@ import { fCurrency } from "../../../utils/formatNumber";
 import plans from "../../../helpers/plans";
 import { capitalCase } from "change-case";
 import cryptoList from "../../../helpers/crypto";
+import getNextPlanId from "../../../utils/getNextPlanId";
 // ----------------------------------------------------------------------
 async function handler({ req }) {
   const user = serializeFields(req.user);
@@ -91,17 +92,6 @@ const style = {
   border: "1px solid #cdcdcd",
   borderRadius: ".8rem",
   boxShadow: 24,
-};
-
-const getNextPlan = (totalTopUp) => {
-  let highPlan = plans.reduce((acc, plan, index) => {
-    if (plan.minimum > totalTopUp && plans[acc].minimum <= totalTopUp) {
-      acc = index;
-    }
-    return acc;
-  }, 0);
-
-  return plans[highPlan === 0 ? 0 : highPlan - 1];
 };
 
 export default function AllInvestments({ user, allInvestments }) {
@@ -222,7 +212,7 @@ export default function AllInvestments({ user, allInvestments }) {
               upgrading this investment to &nbsp;
               <Typography component={"span"} sx={{ fontWeight: 600 }}>
                 {capitalCase(
-                  getNextPlan(user.accountBalance + topUpIvt.capital).name
+                  getNextPlanId(user.accountBalance + topUpIvt.capital).name
                 )}
                 Plan.
               </Typography>
