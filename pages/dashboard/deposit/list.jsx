@@ -45,7 +45,6 @@ async function handler({ req }) {
     acc[stock.id] = stock;
     return acc;
   }, {});
-  console.log({ uniqueStockString, cryptoDataList, stocksDataMap });
   const depositsWithStockData = allDeposits.map((x) => ({
     ...x,
     stock: stocksDataMap[x.coin],
