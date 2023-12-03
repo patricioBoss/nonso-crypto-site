@@ -54,7 +54,7 @@ async function handler({ req }) {
     ...x,
     stock: stocksDataMap[x.stock],
   }));
-  console.log({ cryptoDataList, stocksDataMap, investmentsWithStockData });
+  // console.log({ cryptoDataList, stocksDataMap, investmentsWithStockData });
   return {
     props: {
       user,
