@@ -72,7 +72,7 @@ export const invest = async (req, res) => {
             transactionId: "invest-" + uuidv4(),
           },
         ],
-        { session }
+        { session, new: true }
       );
       const investmentId = investment[0]._id;
       const message = `${profile.firstName}, your ${
@@ -99,14 +99,28 @@ export const invest = async (req, res) => {
       const normalizeLevel =
         req.profile.level === 0 ? 0 : req.profile.level - 1;
 
-      // console.log({ normalizeLevel, invt: invest.planId });
+      console.log({ normalizeLevel, invt: invest.planId });
       if (invest.planId >= normalizeLevel) {
         await User.findByIdAndUpdate(
           req.profile._id,
           {
             level: invest.planId,
             $inc: {
-              accountBalance: -Number(investment[0].capital),
+              accountBalance: Number(-investment[0].capital),
+            },
+          },
+          {
+            session,
+            new: true,
+            runValidators: true,
+          }
+        );
+      } else {
+        await User.findByIdAndUpdate(
+          req.profile._id,
+          {
+            $inc: {
+              accountBalance: Number(-investment[0].capital),
             },
           },
           {
