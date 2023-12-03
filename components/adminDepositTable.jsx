@@ -230,14 +230,18 @@ function MoreMenuButton({ row, handleActive, handleDeleteModal }) {
         }}
       >
         <MenuItem>
-          <LoadingButton
-            onClick={() => handleActive(row)}
-            loading={row.loading}
-            variant="contained"
-            color="success"
-          >
-            <span>Approve Deposit</span>
-          </LoadingButton>
+          {row.status === "approved" ? (
+            "Already approved"
+          ) : (
+            <LoadingButton
+              onClick={() => handleActive(row)}
+              loading={row.loading}
+              variant="contained"
+              color="success"
+            >
+              <span>Approve Deposit</span>
+            </LoadingButton>
+          )}
         </MenuItem>
         <Divider sx={{ borderStyle: "dashed" }} />
 
