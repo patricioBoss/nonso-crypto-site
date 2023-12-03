@@ -88,7 +88,7 @@ function DepositCard({ user, coin }) {
     axios
       .post(`/api/user/${user._id}/deposit/`, { ...field, coin: coin.id })
       .then(() => {
-        router.push("/deposit/list");
+        router.push("/dashboard/deposit/list");
         setIsSubmitting(false);
       })
       .catch((err) => {
