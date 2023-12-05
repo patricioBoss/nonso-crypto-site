@@ -80,10 +80,11 @@ export default function MyApp(props) {
             content:
               "AI crypto mining, Cryptocurrency investment, Blockchain technology, AI-driven mining, Cryptocurrency mining solutions, Mining profitability, Secure crypto mining, WisevestCapital, AI mining technology, Financial growth in cryptocurrency, Crypto investment platform, Secure blockchain investments, Certified crypto mining, AI-powered investment.",
           },
-          // {
-          //   name: "google-site-verification",
-          //   content: "zElf0lEx7sIag7jmbsi1DbGcFRRpzg0em8yY1khoLYE",
-          // },
+          //<meta name="google-site-verification" content="B9HCpcy0tCm1h-IrfjNYrOdeBRK9CZ3F9d338Y5XEuI" />
+          {
+            name: "google-site-verification",
+            content: "B9HCpcy0tCm1h-IrfjNYrOdeBRK9CZ3F9d338Y5XEuI",
+          },
         ]}
         additionalLinkTags={[
           {
