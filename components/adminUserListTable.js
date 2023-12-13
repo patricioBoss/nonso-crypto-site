@@ -379,6 +379,63 @@ function AddBonus({ user }) {
     </div>
   );
 }
+function AddBalance({ user }) {
+  const { _id } = user;
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [value, setValue] = useState("");
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+  const handleAdd = () => {
+    setLoading(true);
+    axios
+      .put(`/api/user/${_id}/balance`, { balance: value })
+      .then((res) => {
+        setLoading(false);
+        toast.success(res.data.message);
+      })
+      .catch((err) => {
+        // console.log(err.response?.data.message);
+        setLoading(false);
+        if (err.response) {
+          toast.error(err.response.data.message);
+        } else {
+          toast.error(err.message);
+        }
+      });
+  };
+
+  return (
+    <div>
+      <Button variant="contained" onClick={handleOpen}>
+        Add Balance
+      </Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography mb={4} variant="subtitle2">
+            Note: This is for only active Users
+          </Typography>
+          <TextField onChange={handleChange} value={value} type={"number"} />
+          <LoadingButton
+            onClick={handleAdd}
+            loading={loading}
+            variant="outlined"
+          >
+            <span>Add To Balance </span>
+          </LoadingButton>
+        </Box>
+      </Modal>
+    </div>
+  );
+}
 
 function MoreMenuButton({ user, handleVerify, handleModal, handleDetails }) {
   const [open, setOpen] = useState(null);
@@ -436,6 +493,7 @@ function MoreMenuButton({ user, handleVerify, handleModal, handleDetails }) {
             <AddBonus user={user} />
           )}
         </MenuItem>
+        <MenuItem>{user.isVerified && <AddBalance user={user} />}</MenuItem>
         <Divider sx={{ borderStyle: "dashed" }} />
 
         <MenuItem sx={{ color: "error.main" }} onClick={handleModal}>

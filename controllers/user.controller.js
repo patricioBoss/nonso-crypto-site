@@ -256,6 +256,27 @@ export const addBonus = async (req, res) => {
   }
 };
 
+export const addBalance = async (req, res) => {
+  const userId = req.profile._id;
+  const balance = req.body.balance;
+  if (isNaN(Number(balance))) {
+    return response(res, 400, "the value is not a number", null);
+  }
+  try {
+    await User.findByIdAndUpdate(
+      userId,
+      { $inc: { accountBalance: Number(balance) } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    return response(res, 200, "bonus added successful", null);
+  } catch (err) {
+    return response(res, 500, "server error", err.message);
+  }
+};
+
 export const updateWallet = async (req, res) => {
   const { _id } = req.profile;
   console.log("body for wallet update", req.body);
