@@ -115,7 +115,7 @@ const Footer = () => {
                         <i className="uil uil-angle-right-b me-1"></i> Contact
                         Us
                         <br />
-                        (+447404791963)
+                        (+16465439217)
                       </a>
                     </li>
                     {/* <li className="mt-[10px]">

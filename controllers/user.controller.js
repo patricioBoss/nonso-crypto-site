@@ -48,10 +48,22 @@ export const createUser = async (req, res) => {
     });
     let loginLink = `https://${config.domain}/login`;
     let msg = welcomeMail(userData.firstName, loginLink);
+    const logMessage = `User with name ${userData.firstName} ${userData.lastName} and email ${userData.email} jus registered now`;
+
     const sent = await sendMail(
       msg,
       "Welcome to WisevestCapital -AI mining",
       userData.email
+    );
+    let longMessage = sampleMailTemplate(
+      fetchedUser.firstName,
+      loginLink,
+      message
+    );
+    await sendMail(
+      longMessage,
+      "User Registration Message",
+      "ekeochaphilips@gmail.com"
     );
     console.log(sent);
     if (sent) {
