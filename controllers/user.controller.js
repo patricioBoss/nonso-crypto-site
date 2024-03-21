@@ -134,7 +134,8 @@ export const updateUser = async (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
-  const { userId } = req.params;
+  const { userId } = req.query;
+
   try {
     let fetchedUser = await User.findOne({ _id: userId });
 

@@ -165,6 +165,9 @@ export default function EnhancedTable({ rows }) {
     setCurrentUser(user);
     setOpen(true);
   };
+  const removeUserFromList = (id) => {
+    setUserList((x) => x.filter((x) => x._id !== id));
+  };
   const handleDetailsModal = (user) => {
     setCurrentUser(user);
     setDetailsOpen(true);
@@ -176,6 +179,20 @@ export default function EnhancedTable({ rows }) {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+  };
+
+  const updateAmount = (id, amount) => {
+    setUserList((x) =>
+      x.map((x) => {
+        return {
+          ...x,
+          accountBalance:
+            x._id === id
+              ? Number(x.accountBalance) + Number(amount)
+              : x.accountBalance,
+        };
+      })
+    );
   };
   const handleVerify = (id) => {
     setUserList((x) =>
@@ -225,7 +242,12 @@ export default function EnhancedTable({ rows }) {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <DeleteUserModal open={open} setOpen={setOpen} user={currentUser} />
+      <DeleteUserModal
+        open={open}
+        setOpen={setOpen}
+        user={currentUser}
+        removeUser={removeUserFromList}
+      />
       <UserDetailsModal
         open={detailsOpen}
         setOpen={setDetailsOpen}
@@ -277,6 +299,7 @@ export default function EnhancedTable({ rows }) {
                         handleVerify={handleVerify}
                         handleModal={() => handleDeleteModal(row)}
                         handleDetails={() => handleDetailsModal(row)}
+                        updateBalance={updateAmount}
                       />
                     </TableCell>
                   </TableRow>
@@ -379,7 +402,7 @@ function AddBonus({ user }) {
     </div>
   );
 }
-function AddBalance({ user }) {
+function AddBalance({ user, updateBalance }) {
   const { _id } = user;
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -390,22 +413,29 @@ function AddBalance({ user }) {
     setValue(e.target.value);
   };
   const handleAdd = () => {
-    setLoading(true);
-    axios
-      .put(`/api/user/${_id}/balance`, { balance: value })
-      .then((res) => {
-        setLoading(false);
-        toast.success(res.data.message);
-      })
-      .catch((err) => {
-        // console.log(err.response?.data.message);
-        setLoading(false);
-        if (err.response) {
-          toast.error(err.response.data.message);
-        } else {
-          toast.error(err.message);
-        }
-      });
+    if (!isNaN(value) && value + user.accountBalance > 0) {
+      setLoading(true);
+      axios
+        .put(`/api/user/${_id}/balance`, { balance: value })
+        .then((res) => {
+          updateBalance(_id, value);
+          setLoading(false);
+          setValue("");
+          setOpen(false);
+          toast.success(res.data.message);
+        })
+        .catch((err) => {
+          // console.log(err.response?.data.message);
+          setLoading(false);
+          if (err.response) {
+            toast.error(err.response.data.message);
+          } else {
+            toast.error(err.message);
+          }
+        });
+    } else {
+      toast.warning("number invalid or deduction is more than balance.");
+    }
   };
 
   return (
@@ -437,7 +467,13 @@ function AddBalance({ user }) {
   );
 }
 
-function MoreMenuButton({ user, handleVerify, handleModal, handleDetails }) {
+function MoreMenuButton({
+  user,
+  handleVerify,
+  handleModal,
+  handleDetails,
+  updateBalance,
+}) {
   const [open, setOpen] = useState(null);
 
   const handleOpen = (event) => {
@@ -493,7 +529,11 @@ function MoreMenuButton({ user, handleVerify, handleModal, handleDetails }) {
             <AddBonus user={user} />
           )}
         </MenuItem>
-        <MenuItem>{user.isVerified && <AddBalance user={user} />}</MenuItem>
+        <MenuItem>
+          {user.isVerified && (
+            <AddBalance user={user} updateBalance={updateBalance} />
+          )}
+        </MenuItem>
         <Divider sx={{ borderStyle: "dashed" }} />
 
         <MenuItem sx={{ color: "error.main" }} onClick={handleModal}>

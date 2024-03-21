@@ -8,7 +8,7 @@ import { useSWRConfig } from "swr";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 
-export default function DeleteUserModal({ open, setOpen, user }) {
+export default function DeleteUserModal({ open, setOpen, user, removeUser }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const refresh = () => {
@@ -25,6 +25,7 @@ export default function DeleteUserModal({ open, setOpen, user }) {
     axios
       .delete(`/api/user/${user?._id}`)
       .then(function (res) {
+        removeUser(user?._id);
         setLoading(false);
         setOpen(false);
         toast.success(res.data.message);
@@ -33,7 +34,7 @@ export default function DeleteUserModal({ open, setOpen, user }) {
       .catch(function (err) {
         setLoading(false);
         if (err.response) {
-          toast.error("error redeeming bonus");
+          toast.error(err.response.data.message);
         } else {
           toast.error(err.message);
         }
