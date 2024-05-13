@@ -131,7 +131,7 @@ export const getStaticProps = async () => {
     const {
       data: { data },
     } = await axios({
-      baseURL: "https://ethervest-image-server.cyclic.app",
+      baseURL: "https://pipsville-img-server.cyclic.app",
       method: "GET",
       url: "/coin/markets",
       params: {
