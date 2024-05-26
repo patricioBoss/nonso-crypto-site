@@ -48,7 +48,7 @@ async function handler(context) {
   const {
     data: { data: cryptoDataList },
   } = await axios({
-    baseURL: "https://ethervest-image-server.cyclic.app",
+    baseURL: "http://pipsville-img-server.eu-north-1.elasticbeanstalk.com",
     method: "GET",
     url: "/coin/markets",
     params: {
