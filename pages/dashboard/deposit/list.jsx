@@ -31,7 +31,7 @@ async function handler({ req }) {
   const {
     data: { data: cryptoDataList },
   } = await axios({
-    baseURL: "http://pipsville-img-server.eu-north-1.elasticbeanstalk.com",
+    baseURL: "https://fidelitycrypto.onrender.com",
     method: "GET",
     url: "/coin/markets",
     params: {
