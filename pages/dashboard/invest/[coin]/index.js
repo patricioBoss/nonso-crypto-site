@@ -48,7 +48,7 @@ async function handler(context) {
   const {
     data: { data: cryptoDataList },
   } = await axios({
-    baseURL: "https://fidelitycrypto.onrender.com",
+    baseURL: "https://fidelity-2del.onrender.com",
     method: "GET",
     url: "/coin/markets",
     params: {
