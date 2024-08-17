@@ -6,6 +6,7 @@ const nextConfig = {
       "https://s3-symbol-logo.tradingview.com",
       "bd-piano-live.mystagingwebsite.com",
       "assets.coingecko.com",
+      "coin-images.coingecko.com",
     ],
   },
   // async rewrites() {
