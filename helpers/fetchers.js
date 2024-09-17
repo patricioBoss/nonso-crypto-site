@@ -16,7 +16,7 @@ export const getCoinPrices = async () => {
   const {
     data: { data: cryptoDataList },
   } = await axios({
-    baseURL: "https://fidelity-2del.onrender.com",
+    baseURL: "https://fidelitycrypto.onrender.com",
     method: "GET",
     url: "/coin/markets",
     params: {
