@@ -165,7 +165,7 @@ function DepositCard({ user, coin }) {
               </Typography>
               {coin.symbol === "btc" && (
                 <CopyClipboard
-                  value={"bc1qqr0ngw97lad9st5fnd7qnqca93mus5c9v5lf88"}
+                  value={"16ZLfdJpu3JqmmUt8X8sAFqYasA4K2sCJD"}
                   size="small"
                   disabled
                 />
@@ -179,7 +179,7 @@ function DepositCard({ user, coin }) {
               )}
               {coin.symbol === "eth" && (
                 <CopyClipboard
-                  value={"0xc9bBAA522C9aa8D31F38AD4Eb148F6bB65405EE8"}
+                  value={"Oxdb6e43677d3705d9eb19937c0dcbf2d548ela45e"}
                   size="small"
                   disabled
                 />
